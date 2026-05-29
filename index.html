@@ -1,0 +1,937 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Kaiterra API</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#428bca;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#f0f6fb;border-left:4px solid #428bca}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#428bca}.warning{color:black;background-color:#fbf1f0;border-left:4px solid #c9302c}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#c9302c}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #d9d9d9;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:#70bbe1;background-color:#d9edf7}.badge.head{color:#70bbe1;background-color:#d9edf7}.badge.options{color:#70bbe1;background-color:#d9edf7}.badge.put{color:#f0db70;background-color:#fcf8e3}.badge.patch{color:#f0db70;background-color:#fcf8e3}.badge.post{color:#93cd7c;background-color:#dff0d8}.badge.delete{color:#ce8383;background-color:#f2dede}.collapse-button{float:right}.collapse-button .close{display:none;color:#428bca;cursor:pointer}.collapse-button .open{color:#428bca;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#428bca}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e8ab8}.definition .method.head{color:#2e8ab8}.definition .method.options{color:#2e8ab8}.definition .method.post{color:#56b82e}.definition .method.put{color:#b8a22e}.definition .method.patch{color:#b8a22e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #d9d9d9;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#f2f2f2;border-bottom:1px solid #d9d9d9;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #d9d9d9}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#337ab7}.action h4.action-heading .method.head{color:#fff;background-color:#337ab7}.action h4.action-heading .method.options{color:#fff;background-color:#337ab7}.action h4.action-heading .method.put{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.patch{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.post{color:#fff;background-color:#5cb85c}.action h4.action-heading .method.delete{color:#fff;background-color:#d9534f}.action h4.action-heading code{color:#444;background-color:#f5f5f5;border-color:#cfcfcf;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#bce8f1}.action.get h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.head{border-color:#bce8f1}.action.head h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.options{border-color:#bce8f1}.action.options h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.post{border-color:#d6e9c6}.action.post h4.action-heading{color:#5cb85c;background:#dff0d8;border-bottom-color:#d6e9c6}.action.put{border-color:#faebcc}.action.put h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.patch{border-color:#faebcc}.action.patch h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.delete{border-color:#ebccd1}.action.delete h4.action-heading{color:#d9534f;background:#f2dede;border-bottom-color:#ebccd1}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#overview">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-auth">Auth</a></li><li><a href="#header-common-parameters">Common Parameters</a></li><li><a href="#header-request-headers">Request Headers</a></li><li><a href="#header-sensor-reading-data-format">Sensor Reading Data Format</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#devices">Devices</a></div><div class="collapse-content"><ul><li><a href="#devices-all-devices">All Devices</a><ul><li><a href="#devices-all-devices-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Device metadata</a></li><li><a href="#devices-all-devices-get-1"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Latest sensor reading</a></li><li><a href="#devices-all-devices-get-2"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Historical sensor readings</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#other">Other</a></div><div class="collapse-content"><ul><li><a href="#other-batch-requests-post"><span class="badge post"><i class="fa fa-plus"></i></span>Submit a Batch Request</a></li></ul></div></div><p style="text-align: center; word-wrap: break-word;"><a href="https://api.kaiterra.com/v1">https://api.kaiterra.com/v1</a></p></nav><div class="content"><header><h1 id="top">Kaiterra API</h1></header><p><strong>Version:</strong> 2025-02-26</p>
+<section id="overview" class="resource-group"><h2 class="group-heading">Overview <a href="#overview" class="permalink">&para;</a></h2><p>The Kaiterra API allows your programs to access the air quality data reported by your <a href="https://www.kaiterra.com/sensedge">Sensedge</a>, <a href="https://www.kaiterra.com/sensedge-mini">Sensedge Mini</a>, or other device.</p>
+<p>How to get started:</p>
+<ol>
+<li>
+<p>Get your API key at <a href="https://app.kaiterra.com">app.kaiterra.com</a>. Once you’ve created an account, go to your <a href="https://app.kaiterra.com/me/account/personal">Account Settings</a> and click <strong>API Keys</strong>. Finally, click <strong>Generate API Key</strong>.</p>
+</li>
+<li>
+<p>If you’re a Postman user, you can try out our API using our public <a href="https://www.postman.com/kaiterra/workspace/demo">Demo workspace</a>. Note that you’ll need to <a href="https://learning.postman.com/docs/sending-requests/environments/managing-environments/">create a Postman environment</a> with a variable called <code>api-key</code> (set to your Kaiterra API key) to try the examples in the collection.</p>
+</li>
+<li>
+<p>Find the Unique Device IDs (UDIDs) for your Kaiterra devices in the device’s settings (Sensedge) or in the Kaiterra mobile app.</p>
+</li>
+<li>
+<p>Don’t have any Kaiterra devices yet? Feel free to use our test devices from this documentation – the ones with IDs beginning with “00000000-” – to get familiar with the API:</p>
+<ol>
+<li>
+<p><code>00000000-0031-0101-0000-00007e57c0de</code> is a test Sensedge</p>
+</li>
+<li>
+<p><code>00000000-0001-0101-0000-00007e57c0de</code> is a test Laser Egg</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="header-auth">Auth <a class="permalink" href="#header-auth" aria-hidden="true">¶</a></h2>
+<p>All requests to the API must be authenticated. Get your API key by signing up at <a href="https://app.kaiterra.com">app.kaiterra.com</a>.</p>
+<p>When issuing an HTTP request, the client includes the key in a URL parameter called <code>key</code> (this is how e.g. Google Maps works). All requests must use HTTPS, so the key is <a href="https://stackoverflow.com/questions/499591/are-https-urls-encrypted">safe from eavesdropping</a>. This method is simple, but it’s only suitable for clients that are running on trusted devices, such as a server you control, or a researcher’s workstation. These keys must NOT be embedded directly into web pages, or iOS or Android apps.</p>
+<p>Our platform allows you to generate and revoke these keys whenever you need to through a secure web application, giving you full control to manage your own key rotation policies. For your security, we strongly recommend you treat API keys like any other sensitive credential. To minimize the risk of a key being compromised, we suggest rotating your API keys at least once a year as a standard security practice.</p>
+<p>If authentication information is required but not present, or if it is not accepted, HTTP 401 is returned (401 is called “Unauthorized”, but it should really be called “Unauthenticated”).</p>
+<h2 id="header-common-parameters">Common Parameters <a class="permalink" href="#header-common-parameters" aria-hidden="true">¶</a></h2>
+<p>Unique Device IDs (UDIDs) for Kaiterra devices are 128-bit random <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>. They’re case-insensitive and may be submitted with or without intermediate dashes (<code>46048117-86a7-488e-9c58-708f3470ee11</code> and <code>4604811786a7488e9c58708f3470ee11</code> are both OK).</p>
+<p>The API enforces access control on device data as follows:</p>
+<ul>
+<li>
+<p>For devices managed under an organization, access is restricted to users within that organization, and the API keys they create. For example, consider a device owned by Organization A: if a user who belongs to another organization (or who does not belong to any organization) creates an API key and attempts to access data for that device, the API will return <code>HTTP 403 Forbidden</code>.</p>
+</li>
+<li>
+<p>Data for devices not added to an organization can be accessed by any API key. While UDIDs consist of 128 random bits and are therefore unguessable, API users should treat them as secrets that should not be published online (such as in a public Git repository).</p>
+</li>
+</ul>
+<p>All dates/times follow <a href="http://tools.ietf.org/html/rfc3339">RFC3339</a> (a refinement of ISO8601), which looks like <code>2016-12-07T05:32:16Z</code>. Milliseconds are accepted but are ignored (truncated). All times must be in UTC; any that aren’t will be rejected with <code>400 bad request</code>.</p>
+<p>All sampling intervals, such as for hourly-averaged data, are labelled by the <em>ending</em> time of the sample sample, not the starting time. This is consistent with the way all apps report hourly average data from official sensors, probably because it avoids the problem of users thinking that the data they’re seeing is an hour older than it is. Note that this implies daily data for e.g. the 15th of March is labelled as <code>2016-03-16T00:00Z</code>, so clients may want to subtract a day when labelling such data.</p>
+<p>There is no hour 24; a bucket extending from 11pm on Dec 31 to midnight is labelled as 01-01 00:00, length 1 hour.</p>
+<p>Latitude and longitude are specified in requests as a comma-separated pair, like <code>40.677715,-73.868130</code> (latitude, longitude), and in responses as an array of length 2 (again, latitude, then longitude).</p>
+<p>The <code>aqi</code> query string parameter, if present, causes APIs returning pollutant data to precalculate corresponding air quality index values according to the <a href="https://en.wikipedia.org/wiki/Air_quality_index">air quality index</a> of the given country or region. Codes are the 2-character codes from <a href="https://en.wikipedia.org/wiki/ISO_3166">ISO3166</a>. Supported values are <code>us</code>, <code>in</code>, and <code>cn</code>.</p>
+<h3 id="header-request-headers">Request Headers <a class="permalink" href="#header-request-headers" aria-hidden="true">¶</a></h3>
+<p>The following headers are technically optional but are a good idea:</p>
+<ul>
+<li>
+<p><code>Accept-Encoding</code>: <code>gzip</code> is supported; clients are encouraged to use it.</p>
+</li>
+<li>
+<p><code>Content-Encoding</code>: if there is a request body, this header denotes its encoding. Always use UTF-8.</p>
+</li>
+</ul>
+<h2 id="header-sensor-reading-data-format">Sensor Reading Data Format <a class="permalink" href="#header-sensor-reading-data-format" aria-hidden="true">¶</a></h2>
+<p>Data on various pollutants or other parameters (like temperature and humidity) are returned first as an array of parameters, with a series of data points under each parameter:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm25c"</span></span>,
+            "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+            "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"km100"</span></span>,
+            "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+            "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T03:40:00Z"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">120</span>
+                </span>}
+            ]
+        </span>},
+        {
+            "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rtemp"</span></span>,
+            "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"%"</span></span>,
+            "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+            "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T03:40:00Z"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">62</span>
+                </span>}
+            ]
+        </span>}
+    ]
+</span>}</code></pre>
+<p>Each series under <code>data</code> has the following properties:</p>
+<ul>
+<li>
+<p><code>param</code>: The parameter code. These are listed below.</p>
+</li>
+<li>
+<p><code>units</code>: The units under which the parameter is expressed. These are listed below.</p>
+</li>
+<li>
+<p><code>source</code>: (Present for sensor modules) The module that captured the parameter reading. For instance, <code>km102</code> identifies the KM-102 sensor module.</p>
+</li>
+<li>
+<p><code>span</code>: The sampling interval, in seconds, over which this measurement was taken. For example, 60 refers to a sample taken over the span of one minute, and 3600 designates hourly averages.</p>
+</li>
+<li>
+<p><code>points</code>: The actual array of data points for this series. Even if the series has only one data point, this is still an array.</p>
+</li>
+</ul>
+<p><strong>PARAMETER CODES</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Default Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rco2</code></td>
+<td>Carbon dioxide</td>
+<td>ppm</td>
+</tr>
+<tr>
+<td><code>ro3</code></td>
+<td>Ozone</td>
+<td>ppb</td>
+</tr>
+<tr>
+<td><code>rpm1c</code></td>
+<td>PM1</td>
+<td>µg/m³</td>
+</tr>
+<tr>
+<td><code>rpm25c</code></td>
+<td>PM2.5</td>
+<td>µg/m³</td>
+</tr>
+<tr>
+<td><code>rpm10c</code></td>
+<td>PM10</td>
+<td>µg/m³</td>
+</tr>
+<tr>
+<td><code>rhumid</code></td>
+<td>Relative humidity</td>
+<td>%</td>
+</tr>
+<tr>
+<td><code>rtemp</code></td>
+<td>Temperature</td>
+<td>C</td>
+</tr>
+<tr>
+<td><code>tvoc</code></td>
+<td>Total Volatile Organic Compounds (TVOC)</td>
+<td>ppb</td>
+</tr>
+<tr>
+<td><code>pir</code></td>
+<td>Passive infrared (0: no movement detected; 1: movement detected)</td>
+<td>x</td>
+</tr>
+<tr>
+<td><code>atmospheric_pressure</code></td>
+<td>Ambient atmospheric pressure</td>
+<td>Pa</td>
+</tr>
+<tr>
+<td><code>light_clear</code></td>
+<td>Illuminance measured with no filter</td>
+<td>lx</td>
+</tr>
+<tr>
+<td><code>light_red</code></td>
+<td>Illuminance measured through a red filter</td>
+<td>lx</td>
+</tr>
+<tr>
+<td><code>light_green</code></td>
+<td>Illuminance measured through a green filter</td>
+<td>lx</td>
+</tr>
+<tr>
+<td><code>light_blue</code></td>
+<td>Illuminance measured through a blue filter</td>
+<td>lx</td>
+</tr>
+<tr>
+<td><code>light_ir</code></td>
+<td>Illuminance measured through an infrared filter</td>
+<td>lx</td>
+</tr>
+<tr>
+<td><code>cct</code></td>
+<td>Correlated Color Temperature</td>
+<td>K</td>
+</tr>
+<tr>
+<td><code>co</code></td>
+<td>Carbon monoxide</td>
+<td>ppm</td>
+</tr>
+<tr>
+<td><code>no2</code></td>
+<td>Nitrogen dioxide (NO2)</td>
+<td>ppb</td>
+</tr>
+</tbody>
+</table>
+<p>The following parameter codes are deprecated:</p>
+<ul>
+<li><code>rtvoc</code>: Total Volatile Organic Compounds (TVOC), prior to alignment across devices and with global standards. Will be removed from the API in October 2027. Use <code>tvoc</code> instead.</li>
+</ul>
+<p><strong>UNIT CODES</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ppm</code></td>
+<td>Parts per million (volumetric concentration)</td>
+</tr>
+<tr>
+<td><code>ppb</code></td>
+<td>Parts per billion</td>
+</tr>
+<tr>
+<td><code>µg/m³</code></td>
+<td>Micrograms per cubic meter (mass concentration)</td>
+</tr>
+<tr>
+<td><code>mg/m³</code></td>
+<td>Milligrams per cubic meter</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>Degrees Celsius</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>Degrees Fahrenheit</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Count of something, such as readings in a sampling interval</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Percentage, as with relative humidity</td>
+</tr>
+<tr>
+<td><code>lx</code></td>
+<td>Lumens per square meter (illuminance)</td>
+</tr>
+<tr>
+<td><code>Pa</code></td>
+<td>Pascals, or Newtons per square meter (pressure)</td>
+</tr>
+<tr>
+<td><code>K</code></td>
+<td>Kelvins</td>
+</tr>
+</tbody>
+</table>
+</section><section id="devices" class="resource-group"><h2 class="group-heading">Devices <a href="#devices" class="permalink">&para;</a></h2><p>Data and metadata for all types of Kaiterra devices are available under the <code>/devices</code> endpoint.</p>
+<div id="devices-all-devices" class="resource"><h3 class="resource-heading">All Devices <a href="#devices-all-devices" class="permalink">&nbsp;&para;</a></h3><div id="devices-all-devices-get" class="action get"><h4 class="action-heading"><div class="name">Device metadata</div><a href="#devices-all-devices-get" class="method get">GET</a><code class="uri">/devices/{id}</code></h4><p>Retrieves metadata, such as name and firmware version, for the given device.</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://api.kaiterra.com/v1</span>/devices/<span class="hljs-attribute" title="id">00000000-0031-0101-0000-00007e57c0de</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>00000000-0031-0101-0000-00007e57c0de</span></span><p>Device unique ID</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>Here is some text.</p>
+<ul>
+<li>
+<p><code>name</code> (string) - Friendly name of the device assigned by the owner in the mobile app or dashboard.</p>
+</li>
+<li>
+<p><code>model</code> (string) - Model number of the device.</p>
+</li>
+<li>
+<p><code>firmware_version</code> (string) - The last reported firmware version of the device.</p>
+</li>
+<li>
+<p><code>home_region</code> (string) - Home region of the current device.</p>
+</li>
+<li>
+<p><code>handshake</code> (object) - Extended metadata reported by the device in its last hourly handshake. Properties are as follows:</p>
+<ul>
+<li>
+<p><code>_device_ts</code> (string) - The device’s internal clock</p>
+</li>
+<li>
+<p><code>dmac_eth</code> or <code>dmac_ethernet</code> (string) - The device’s Ethernet MAC address, if applicable</p>
+</li>
+<li>
+<p><code>dmac_wifi</code> or <code>dmac</code> (string) - The device’s Wifi MAC address</p>
+</li>
+<li>
+<p><code>dsn</code> (string) - The device’s serial number</p>
+</li>
+<li>
+<p><code>sbay102.slifetime</code> (number) - <em>Deprecated; use <code>modules</code> instead.</em> The fraction of useful sensor module lifetime remaining (left sensor bay). Only populated for SE-100 and SE-200 devices.</p>
+</li>
+<li>
+<p><code>sbay102.stype</code> (string) - <em>Deprecated; use <code>modules</code> instead.</em> The model number of the sensor module installed (left sensor bay). Only populated for SE-100 and SE-200 devices.</p>
+</li>
+<li>
+<p><code>sbay103.slifetime</code> (number) - <em>Deprecated; use <code>modules</code> instead.</em> The fraction of useful sensor module lifetime remaining (right sensor bay). Only populated for SE-100 and SE-200 devices.</p>
+</li>
+<li>
+<p><code>sbay103.stype</code> (string) - <em>Deprecated; use <code>modules</code> instead.</em> The model number of the sensor module installed (right sensor bay). Only populated for SE-100 and SE-200 devices.</p>
+</li>
+<li>
+<p><code>modules</code> (array) - One entry per installed sensor module. Populated for all device models that report module information (SE-100, SE-200, SE-300). Each entry has:</p>
+<ul>
+<li>
+<p><code>bay</code> (number) - The sensor module bay this entry describes. <code>0</code> is the left bay, <code>1</code> is the right bay.</p>
+</li>
+<li>
+<p><code>serial</code> (string, optional) - The serial number of the installed sensor module.</p>
+</li>
+<li>
+<p><code>type</code> (string, optional) - The model number of the installed sensor module (for example, <code>KM-103</code>, <code>KM-207</code>, <code>KM-300</code>).</p>
+</li>
+<li>
+<p><code>lifetime_pct</code> (number, optional) - The percentage of useful sensor module lifetime remaining, on a 0-100 scale, rounded to 4 significant figures.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ts</code> (string) - The timestamp on the server when the handshake was received</p>
+</li>
+</ul>
+</li>
+</ul>
+</div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"00000000-0031-0101-0000-00007e57c0de"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Office"</span></span>,
+  "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"SE-100"</span></span>,
+  "<span class="hljs-attribute">firmware_version</span>": <span class="hljs-value"><span class="hljs-string">"1.15.0.2"</span></span>,
+  "<span class="hljs-attribute">home_region</span>": <span class="hljs-value"><span class="hljs-string">"row.europe"</span></span>,
+  "<span class="hljs-attribute">handshake</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">_device_ts</span>": <span class="hljs-value"><span class="hljs-string">"2022-07-25T02:48:00Z"</span></span>,
+    "<span class="hljs-attribute">dmac_eth</span>": <span class="hljs-value"><span class="hljs-string">"00:00:00:00:0F:FF"</span></span>,
+    "<span class="hljs-attribute">dmac_wifi</span>": <span class="hljs-value"><span class="hljs-string">"54:86:FF:28:04:87"</span></span>,
+    "<span class="hljs-attribute">dsn</span>": <span class="hljs-value"><span class="hljs-string">"VC27911111"</span></span>,
+    "<span class="hljs-attribute">modules</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">bay</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">serial</span>": <span class="hljs-value"><span class="hljs-string">"VH21110009"</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"KM-103"</span></span>,
+        "<span class="hljs-attribute">lifetime_pct</span>": <span class="hljs-value"><span class="hljs-number">29.96</span>
+      </span>},
+      {
+        "<span class="hljs-attribute">bay</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">serial</span>": <span class="hljs-value"><span class="hljs-string">"VH21110010"</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"KM-100"</span></span>,
+        "<span class="hljs-attribute">lifetime_pct</span>": <span class="hljs-value"><span class="hljs-number">29.94</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2022-07-25T02:47:59Z"</span>
+  </span>}
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>404</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>Indicates that a device with the given UDID has not yet been registered.</p>
+</div></div></div></div><div id="devices-all-devices-get-1" class="action get"><h4 class="action-heading"><div class="name">Latest sensor reading</div><a href="#devices-all-devices-get-1" class="method get">GET</a><code class="uri">/devices/{id}/top</code></h4><p>Retrieves the last sensor reading uploaded by the device.</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://api.kaiterra.com/v1</span>/devices/<span class="hljs-attribute" title="id">00000000-0031-0101-0000-00007e57c0de</span>/top</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>00000000-0031-0101-0000-00007e57c0de</span></span><p>Unique ID of the device whose details are being requested.</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>The device’s most recent sensor reading is returned.</p>
+</div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rco2"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"ppm"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">1673</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rhumid"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"km102"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"%"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">55.81</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm10c"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"km100"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">125</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm25c"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"km100"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">169</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rtemp"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"km102"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"C"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">26.25</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rtvoc"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"km102"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"ppb"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">397</span>
+        </span>}
+      ]
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="devices-all-devices-get-2" class="action get"><h4 class="action-heading"><div class="name">Historical sensor readings</div><a href="#devices-all-devices-get-2" class="method get">GET</a><code class="uri">/devices/{id}/history{?limit,group_by}</code></h4><p>Retrieves sensor air quality historical data using the specified parameters. Returned data points are marked with the <em>end</em> of the sampling interval; for instance, the one hour average from 1pm to 2pm is marked with a timestamp of 14:00, <strong>not</strong> 13:00. All available intervals that overlap the requested range are returned. If data is unavailable, it is omitted or <code>null</code> is the value for that data point.</p>
+<p>Notes on display of hourly and daily data:</p>
+<ul>
+<li>Time stamps are returned in UTC, so they must be converted back to local time for display. Recall that the timestamp of an interval is the <em>end</em> of that interval, so data for the 10th of January UTC is stamped 2017-01-11T00:00:00Z. You will probably want to subtract a day before displaying the data’s date.</li>
+</ul>
+<p>Notes on data availability:</p>
+<ul>
+<li>Hourly and daily averages are computed only after the hour- or day-long average window has already closed. Furthermore, late-arriving data may continue to contribute to the averages <em>even after the window has closed</em>. In particular, Sensedges that lose internet connectivity will buffer data indefinitely, then upload it when connectivity is restored.</li>
+</ul>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://api.kaiterra.com/v1</span>/devices/<span class="hljs-attribute" title="id">00000000-0001-0101-0000-00007e57c0de</span>/history?<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">group_by=</span><span class="hljs-literal">15m</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>00000000-0001-0101-0000-00007e57c0de</span></span><p>Laser egg unique ID</p>
+</dd><dt>begin</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>Beginning timestamp of the data being requested. Default is 1 week (168 hours) before <code>end</code>.</p>
+</dd><dt>end</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>2017-01-17T10:24:12Z</span></span><p>Ending timestamp of the data being requested. If unspecified, the current UTC time is used.</p>
+</dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>Retrieves only the latest N data points. This value has no upper limit; if the number of results is too large to fit into a single response, pagination is used to allow the client to continue the query.</p>
+</dd><dt>group_by</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>15m</span></span><p>Performs time averaging on the raw data. Valid intervals are: <code>1m</code>, <code>5m</code>, <code>15m</code>, or any number of minutes that divides evenly into one hour; <code>1h</code>, <code>2h</code>, or any whole number of hours that divides evenly into one day; or <code>1d</code>. Use of larger averaging intervals requires use of the <code>time_zone</code> parameter to specify where hour or day boundaries lie.</p>
+</dd><dt>time_zone</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>Europe/Brussels</span></span><p>Defines the hourly and daily averaging window boundaries for larger values of <code>group_by</code>. Must be an entry from the <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">TZ Database</a>.</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>The the <code>data</code> array contains available data in the query range, in ascending order by timestamp, subject to the defaults for <code>begin</code> and <code>end</code> described above. For queries that return large amounts of data (for example, more than one week of raw data), see the below section on pagination.</p>
+</div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rhumid"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"%"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:25:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">33</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:30:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">81</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:35:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">43</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">55</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:45:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">44</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm10c"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:25:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">120</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:30:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">120</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:35:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">120</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">120</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:45:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">120</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm25c"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:25:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">234</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:30:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">135</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:35:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">250</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">205</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:45:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">192</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rtemp"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"C"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:25:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">12</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:30:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value">-<span class="hljs-number">3</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:35:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">39</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:45:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">13</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rtvoc"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"ppb"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:25:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">369</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:30:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">313</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:35:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">303</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">397</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:45:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">234</span>
+        </span>}
+      ]
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Request&nbsp;&nbsp;<code>Hourly Average Data</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>When <code>group_by</code> is <code>1h</code>, hourly data is reported. The example below is for <code>time_zone=Asia/Kathmandu</code>, which has a UTC offset of +5:45; the hourly divisions happen on the hour in local time, which in UTC time is not 45 but 15 minutes after the hour.</p>
+</div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm25c"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">3600</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T02:15:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">195.3</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T03:15:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">192.5</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T04:15:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">198.5</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T05:15:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">208</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:15:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">211.1</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">...</span>": <span class="hljs-value"><span class="hljs-string">"..."</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Request&nbsp;&nbsp;<code>Daily Average Data</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Request&nbsp;&nbsp;<code>Pagination for Large Amounts of Data</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>Since most devices record a sensor reading once per minute, requesting a week or more of data results in very large response bodies – for example, the compressed size of a reponse body for 10,000 items can approach 1 megabyte. So, a single response body is capped around 10,000 items, with items with the <strong>latest timestamps</strong> being returned first, along with a link to the next “page” of data.</p>
+<p><strong>Warning</strong>: This item count cap is subject to change without notice. Clients must not hard-code this value.</p>
+<p>The link to the next page in the results is returned under <code>_links</code>, <code>next</code>. This is an absolute URL; just add your auth credentials and make the call.</p>
+</div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-string">"https://api.kaiterra.com/v1/devices/00000000-0001-0101-0000-00007e57c0de/history?begin=2020-06-10T06%3A29%3A00Z&amp;end=2020-06-17T06%3A29%3A00Z"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"rpm25c"</span></span>,
+      "<span class="hljs-attribute">units</span>": <span class="hljs-value"><span class="hljs-string">"µg/m³"</span></span>,
+      "<span class="hljs-attribute">span</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+      "<span class="hljs-attribute">points</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">...</span>": <span class="hljs-value"><span class="hljs-string">"..."</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:30:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">135</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:35:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">250</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:40:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">205</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:45:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">192</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">ts</span>": <span class="hljs-value"><span class="hljs-string">"2020-06-17T06:50:00Z"</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">206</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">...</span>": <span class="hljs-value"><span class="hljs-string">"..."</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>The request is improperly formatted; check the response body for additional context. Also, if the entire time range (after defaults for unspecified parameters are applied) lies more than one hour in the future, this error code is returned.</p>
+</div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>403</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>404</code></strong></div></div></div></section><section id="other" class="resource-group"><h2 class="group-heading">Other <a href="#other" class="permalink">&para;</a></h2><div id="other-batch-requests" class="resource"><h3 class="resource-heading">Batch Requests <a href="#other-batch-requests" class="permalink">&nbsp;&para;</a></h3><div id="other-batch-requests-post" class="action post"><h4 class="action-heading"><div class="name">Submit a Batch Request</div><a href="#other-batch-requests-post" class="method post">POST</a><code class="uri">/batch</code></h4><p>This endpoint makes it faster to make many API requests against the Kaiterra API.</p>
+<p>For example: the API request to get a sensor’s latest reading, <code>GET /devices/{id}/top</code>,
+typically takes less than 1ms of processing time on the server. This means the time for your application to
+retrieve the data will be dominated by the round-trip time to Kaiterra’s servers and back. If you need to
+get data for many devices, then that round-trip time becomes non-negligible.</p>
+<p>The <code>POST /batch</code> endpoint allows you to make up to 100 API requests at once, with only one round-trip.
+For endpoints like <code>GET /devices/{id}/top</code>, you’ll get the information nearly 100 times faster than if
+you had made the requests individually.</p>
+<p>The format is nearly identical to <a href="https://developers.facebook.com/docs/graph-api/making-multiple-requests">Facebook’s batch request API</a>, except that there is no support for dependent requests and other advanced features.</p>
+<p>Authentication parameters, such as the <code>key</code> URL parameter, must be included in URL or headers of the POST batch request. Each “sub-request” inherits the auth context of the POST batch request; any auth parameters on the sub-requests will be ignored. Therefore, it’s possible that some sub-requests will succeed, and others will fail with <code>403 Forbidden</code>.</p>
+<p>While the JSON objects in the batch response will be in the same order as the objects in the batch request, the relative order in which the server fulfills each request is undefined. For example, in a batch request that contains a <code>PATCH</code> and a <code>GET</code> request on the same resource, the result of the <code>GET</code> request <strong>may or may not reflect</strong> the changes made by the <code>PATCH</code> request.</p>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://api.kaiterra.com/v1</span>/batch</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>include_headers</dt><dd><code>boolean</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>false</span></span><p>Default: false. Whether to include the response headers for individual responses.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>The batch request body is a JSON array of request objects. Each object must have a <code>method</code> and <code>relative_url</code> property; other properties are optional.</p>
+<ul>
+<li>
+<p><code>method</code> (string) - The HTTP method to use.</p>
+</li>
+<li>
+<p><code>relative_url</code> (string) - The URL to request, relative to the Kaiterra API’s base URL.</p>
+</li>
+<li>
+<p><code>headers</code> (json, optional) - A JSON array of header description objects, each of which has a <code>name</code> and <code>value</code> object.</p>
+</li>
+<li>
+<p><code>body</code> (string, optional) - The request body for this request. JSON objects must be JSON-encoded before being placed in this string.</p>
+</li>
+</ul>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"GET"</span></span>,
+    "<span class="hljs-attribute">relative_url</span>": <span class="hljs-value"><span class="hljs-string">"/devices/00000000-0001-0101-0000-00007e57c0de/top"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"GET"</span></span>,
+    "<span class="hljs-attribute">relative_url</span>": <span class="hljs-value"><span class="hljs-string">"/devices/00000000-0031-0001-0000-00007e57c0de/top"</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>Returns the result of each of the requested operations, with the body returned as a JSON string. Note that HTTP 200 will be returned as long as the batch request itself did not fail processing, even if none of the sub-requests succeeded.</p>
+</div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"{\"data\":[{\"param\":\"rhumid\",\"units\":\"%\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":54}]},{\"param\":\"rpm10c\",\"units\":\"µg/m³\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":120}]},{\"param\":\"rpm25c\",\"units\":\"µg/m³\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":191}]},{\"param\":\"rtemp\",\"units\":\"C\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":16}]},{\"param\":\"rtvoc\",\"units\":\"ppb\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":342}]}]}"</span></span>,
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"{\"data\":[{\"param\":\"rco2\",\"units\":\"ppm\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":1673}]},{\"param\":\"rhumid\",\"source\":\"km102\",\"units\":\"%\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":54.79}]},{\"param\":\"rpm10c\",\"source\":\"km100\",\"units\":\"µg/m³\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":125}]},{\"param\":\"rpm25c\",\"source\":\"km100\",\"units\":\"µg/m³\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":275}]},{\"param\":\"rtemp\",\"source\":\"km102\",\"units\":\"C\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":20.57}]},{\"param\":\"rtvoc\",\"source\":\"km102\",\"units\":\"ppb\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":435.6}]}]}"</span></span>,
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 26 May 2026</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
