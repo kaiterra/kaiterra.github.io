@@ -1,0 +1,1 @@
+import{r as e}from"./loadGraphiQLFromCdn-DwF1Ayux.js";export{e as loadGraphiQLFromCdn};

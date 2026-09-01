@@ -1,0 +1,1 @@
+import{o as e}from"./motion-BtDFqjAV.js";import{Et as t}from"./app-BJBOnTyW.js";var n=e(),r=`prose dark:prose-invert typography`,i=({className:e,...i})=>(0,n.jsx)(`div`,{className:t(r,e),...i});export{i as t};

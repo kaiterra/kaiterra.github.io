@@ -1,0 +1,1264 @@
+{
+  "_AiAssistantMenuItems-CuUeYyfB.js": {
+    "file": "assets/AiAssistantMenuItems-CuUeYyfB.js",
+    "name": "AiAssistantMenuItems",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_Alert-tRbBQ38u.js": {
+    "file": "assets/Alert-tRbBQ38u.js",
+    "name": "Alert",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_Badge-B7zKrzT-.js": {
+    "file": "assets/Badge-B7zKrzT-.js",
+    "name": "Badge",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js"
+    ]
+  },
+  "_Callout-Ca-OpS4z.js": {
+    "file": "assets/Callout-Ca-OpS4z.js",
+    "name": "Callout",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_Card-BtTjrp4A.js": {
+    "file": "assets/Card-BtTjrp4A.js",
+    "name": "Card",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_CodeBlock-BM_bbMX-.js": {
+    "file": "assets/CodeBlock-BM_bbMX-.js",
+    "name": "CodeBlock",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_useCopyToClipboard-BW4AQbrE.js"
+    ],
+    "dynamicImports": [
+      "node_modules/zudoku/src/lib/assets/language-icons/typescript.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/javascript.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/react.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/markdown.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/mdx.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/java.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/json.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/yaml.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/toml.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/shell.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/python.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/pnpm.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/npm.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/yarn.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/bun.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/csharp.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/rust.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/ruby.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/php.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/html.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/css.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/objectivec.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/swift.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/go.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/xml.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/kotlin.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/graphql.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/zig.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/scala.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/dart.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/ocaml.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/c.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/cpp.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/commonlisp.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/elixir.tsx",
+      "node_modules/zudoku/src/lib/assets/language-icons/powershell.tsx"
+    ]
+  },
+  "_CodeTabPanel-C5xyVcYF.js": {
+    "file": "assets/CodeTabPanel-C5xyVcYF.js",
+    "name": "CodeTabPanel"
+  },
+  "_DeveloperHint-CGP-tNHf.js": {
+    "file": "assets/DeveloperHint-CGP-tNHf.js",
+    "name": "DeveloperHint",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ],
+    "dynamicImports": [
+      "_Markdown-Cg2Y60Sz.js"
+    ]
+  },
+  "_Heading-CUeZvcSH.js": {
+    "file": "assets/Heading-CUeZvcSH.js",
+    "name": "Heading",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_InlineCode-BlOOxv1o.js": {
+    "file": "assets/InlineCode-BlOOxv1o.js",
+    "name": "InlineCode",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_Item-DF2pfSMV.js": {
+    "file": "assets/Item-DF2pfSMV.js",
+    "name": "Item",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js",
+      "_openapi-C_W_DB0s.js",
+      "_Heading-CUeZvcSH.js",
+      "_useCopyToClipboard-BW4AQbrE.js",
+      "_AiAssistantMenuItems-CuUeYyfB.js",
+      "_Select-JY571Ftt.js"
+    ]
+  },
+  "_Markdown-Cg2Y60Sz.js": {
+    "file": "assets/Markdown-Cg2Y60Sz.js",
+    "name": "Markdown",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_lib-DntQlSM5.js",
+      "_lib-Co4Medk2.js",
+      "_highlight-ChK-MHCU.js",
+      "_shiki-B6tPqSi2.js",
+      "_Typography-DZ3sbvwz.js"
+    ]
+  },
+  "_Pagination-C6l6HoJl.js": {
+    "file": "assets/Pagination-C6l6HoJl.js",
+    "name": "Pagination",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_PlaygroundDialog-JShuyByh.js": {
+    "file": "assets/PlaygroundDialog-JShuyByh.js",
+    "name": "PlaygroundDialog",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js",
+      "_mutation-DKeOfJp5.js",
+      "_Popover-JhZdpPst.js",
+      "_Markdown-Cg2Y60Sz.js",
+      "_Alert-tRbBQ38u.js",
+      "_useCopyToClipboard-BW4AQbrE.js",
+      "_Select-JY571Ftt.js",
+      "_Card-BtTjrp4A.js",
+      "_SyntaxHighlight-DML0q2P6.js",
+      "_securityCredentialsStore-C38489-s.js"
+    ]
+  },
+  "_Popover-JhZdpPst.js": {
+    "file": "assets/Popover-JhZdpPst.js",
+    "name": "Popover",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js"
+    ]
+  },
+  "_SchemaView-C89poh2A.js": {
+    "file": "assets/SchemaView-C89poh2A.js",
+    "name": "SchemaView",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js",
+      "_Markdown-Cg2Y60Sz.js",
+      "_InlineCode-BlOOxv1o.js",
+      "_Badge-B7zKrzT-.js",
+      "_slugify-bXvLWs_E.js",
+      "_Item-DF2pfSMV.js",
+      "_constants-DezTRlnT.js"
+    ]
+  },
+  "_Select-JY571Ftt.js": {
+    "file": "assets/Select-JY571Ftt.js",
+    "name": "Select",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js"
+    ]
+  },
+  "_SyntaxHighlight-DML0q2P6.js": {
+    "file": "assets/SyntaxHighlight-DML0q2P6.js",
+    "name": "SyntaxHighlight",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_shiki-B6tPqSi2.js",
+      "_CodeBlock-BM_bbMX-.js"
+    ]
+  },
+  "_Toc-DWphwLxu.js": {
+    "file": "assets/Toc-DWphwLxu.js",
+    "name": "Toc",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_InlineCode-BlOOxv1o.js"
+    ],
+    "dynamicImports": [
+      "node_modules/zudoku/src/lib/util/hastToJsx.tsx"
+    ]
+  },
+  "_Typography-DZ3sbvwz.js": {
+    "file": "assets/Typography-DZ3sbvwz.js",
+    "name": "Typography",
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "__vite-optional-peer-dep:mermaid:zudoku": {
+    "file": "assets/__vite-optional-peer-dep_mermaid_zudoku-C1eAoAj0.js",
+    "name": "__vite-optional-peer-dep_mermaid_zudoku",
+    "src": "__vite-optional-peer-dep:mermaid:zudoku",
+    "isDynamicEntry": true
+  },
+  "_app-BJBOnTyW.js": {
+    "file": "assets/app-BJBOnTyW.js",
+    "name": "app",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_drawer-DH2oymEx.js",
+      "_zod-C_8-g2jb.js"
+    ],
+    "dynamicImports": [
+      "node_modules/zudoku/src/lib/util/hastToJsx.tsx",
+      "node_modules/zudoku/src/lib/components/navigation/motionFeatures.ts"
+    ]
+  },
+  "_constants-DezTRlnT.js": {
+    "file": "assets/constants-DezTRlnT.js",
+    "name": "constants"
+  },
+  "_css-LbU1hoFO.js": {
+    "file": "assets/css-LbU1hoFO.js",
+    "name": "css"
+  },
+  "_dist-JhRxQfAn.js": {
+    "file": "assets/dist-JhRxQfAn.js",
+    "name": "dist",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js"
+    ]
+  },
+  "_drawer-DH2oymEx.js": {
+    "file": "assets/drawer-DH2oymEx.js",
+    "name": "drawer",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "_highlight-ChK-MHCU.js": {
+    "file": "assets/highlight-ChK-MHCU.js",
+    "name": "highlight",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js"
+    ]
+  },
+  "_java-BtIQNnN0.js": {
+    "file": "assets/java-BtIQNnN0.js",
+    "name": "java"
+  },
+  "_javascript-BzbQS41l.js": {
+    "file": "assets/javascript-BzbQS41l.js",
+    "name": "javascript"
+  },
+  "_jsx-D3KKoC5L.js": {
+    "file": "assets/jsx-D3KKoC5L.js",
+    "name": "jsx"
+  },
+  "_lib-Co4Medk2.js": {
+    "file": "assets/lib-Co4Medk2.js",
+    "name": "lib",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_highlight-ChK-MHCU.js"
+    ]
+  },
+  "_lib-DntQlSM5.js": {
+    "file": "assets/lib-DntQlSM5.js",
+    "name": "lib",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "_loadGraphiQLFromCdn-DwF1Ayux.js": {
+    "file": "assets/loadGraphiQLFromCdn-DwF1Ayux.js",
+    "name": "loadGraphiQLFromCdn",
+    "imports": [
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_motion-BtDFqjAV.js": {
+    "file": "assets/motion-BtDFqjAV.js",
+    "name": "motion",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js"
+    ]
+  },
+  "_mutation-DKeOfJp5.js": {
+    "file": "assets/mutation-DKeOfJp5.js",
+    "name": "mutation",
+    "imports": [
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_openapi-C_W_DB0s.js": {
+    "file": "assets/openapi-C_W_DB0s.js",
+    "name": "openapi",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js"
+    ],
+    "dynamicImports": [
+      "node_modules/zudoku/src/lib/plugins/openapi/client/createServer.ts",
+      "node_modules/zudoku/src/lib/plugins/openapi/OasProvider.tsx",
+      "node_modules/zudoku/src/lib/plugins/openapi/OperationList.tsx",
+      "node_modules/zudoku/src/lib/plugins/openapi/SchemaList.tsx",
+      "node_modules/zudoku/src/lib/plugins/openapi/SchemaInfo.tsx",
+      "_PlaygroundDialog-JShuyByh.js"
+    ]
+  },
+  "_react-error-boundary-CBeGuOrh.js": {
+    "file": "assets/react-error-boundary-CBeGuOrh.js",
+    "name": "react-error-boundary",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "_rolldown-runtime-CNC7AqOf.js": {
+    "file": "assets/rolldown-runtime-CNC7AqOf.js",
+    "name": "rolldown-runtime"
+  },
+  "_securityCredentialsStore-C38489-s.js": {
+    "file": "assets/securityCredentialsStore-C38489-s.js",
+    "name": "securityCredentialsStore",
+    "imports": [
+      "_app-BJBOnTyW.js"
+    ]
+  },
+  "_shiki-B6tPqSi2.js": {
+    "file": "assets/shiki-B6tPqSi2.js",
+    "name": "shiki",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_lib-Co4Medk2.js",
+      "_highlight-ChK-MHCU.js",
+      "_shiki-constants-Cbz7E3qi.js"
+    ]
+  },
+  "_shiki-constants-Cbz7E3qi.js": {
+    "file": "assets/shiki-constants-Cbz7E3qi.js",
+    "name": "shiki-constants"
+  },
+  "_slugify-bXvLWs_E.js": {
+    "file": "assets/slugify-bXvLWs_E.js",
+    "name": "slugify"
+  },
+  "_tsx-BOvsFOI6.js": {
+    "file": "assets/tsx-BOvsFOI6.js",
+    "name": "tsx"
+  },
+  "_typescript-j_1H8WHN.js": {
+    "file": "assets/typescript-j_1H8WHN.js",
+    "name": "typescript"
+  },
+  "_useCopyToClipboard-BW4AQbrE.js": {
+    "file": "assets/useCopyToClipboard-BW4AQbrE.js",
+    "name": "useCopyToClipboard",
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "_useWarmupSchema-wa9aVpJN.js": {
+    "file": "assets/useWarmupSchema-wa9aVpJN.js",
+    "name": "useWarmupSchema",
+    "imports": [
+      "_app-BJBOnTyW.js",
+      "_openapi-C_W_DB0s.js"
+    ]
+  },
+  "_zod-C_8-g2jb.js": {
+    "file": "assets/zod-C_8-g2jb.js",
+    "name": "zod"
+  },
+  "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788296496312": {
+    "file": "assets/api-openapi.yaml-D3X1-6Ak.js",
+    "name": "api-openapi.yaml",
+    "src": "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788296496312",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/css.mjs": {
+    "file": "assets/css-CdtkT07m.js",
+    "name": "css",
+    "src": "node_modules/@shikijs/langs/dist/css.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_css-LbU1hoFO.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/go.mjs": {
+    "file": "assets/go-rLFTqkRN.js",
+    "name": "go",
+    "src": "node_modules/@shikijs/langs/dist/go.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/graphql.mjs": {
+    "file": "assets/graphql-DIYE6kQP.js",
+    "name": "graphql",
+    "src": "node_modules/@shikijs/langs/dist/graphql.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_javascript-BzbQS41l.js",
+      "_typescript-j_1H8WHN.js",
+      "_jsx-D3KKoC5L.js",
+      "_tsx-BOvsFOI6.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/html.mjs": {
+    "file": "assets/html-CVO8wu9Q.js",
+    "name": "html",
+    "src": "node_modules/@shikijs/langs/dist/html.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_css-LbU1hoFO.js",
+      "_javascript-BzbQS41l.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/java.mjs": {
+    "file": "assets/java-DxlWrXwe.js",
+    "name": "java",
+    "src": "node_modules/@shikijs/langs/dist/java.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_java-BtIQNnN0.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/javascript.mjs": {
+    "file": "assets/javascript-Yelw-5ZN.js",
+    "name": "javascript",
+    "src": "node_modules/@shikijs/langs/dist/javascript.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_javascript-BzbQS41l.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/json.mjs": {
+    "file": "assets/json-qhed-kSA.js",
+    "name": "json",
+    "src": "node_modules/@shikijs/langs/dist/json.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/jsonc.mjs": {
+    "file": "assets/jsonc-CYpm1nAK.js",
+    "name": "jsonc",
+    "src": "node_modules/@shikijs/langs/dist/jsonc.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/jsx.mjs": {
+    "file": "assets/jsx-hEbJ82HF.js",
+    "name": "jsx",
+    "src": "node_modules/@shikijs/langs/dist/jsx.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-D3KKoC5L.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/markdown.mjs": {
+    "file": "assets/markdown-BYOwaDjH.js",
+    "name": "markdown",
+    "src": "node_modules/@shikijs/langs/dist/markdown.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/mdx.mjs": {
+    "file": "assets/mdx-DQZ5AkYe.js",
+    "name": "mdx",
+    "src": "node_modules/@shikijs/langs/dist/mdx.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/python.mjs": {
+    "file": "assets/python-gzcpVVnB.js",
+    "name": "python",
+    "src": "node_modules/@shikijs/langs/dist/python.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/shellscript.mjs": {
+    "file": "assets/shellscript-CLZ0U2zV.js",
+    "name": "shellscript",
+    "src": "node_modules/@shikijs/langs/dist/shellscript.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/langs/dist/tsx.mjs": {
+    "file": "assets/tsx-5f3ulCja.js",
+    "name": "tsx",
+    "src": "node_modules/@shikijs/langs/dist/tsx.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_tsx-BOvsFOI6.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/typescript.mjs": {
+    "file": "assets/typescript-Utq2Cl8c.js",
+    "name": "typescript",
+    "src": "node_modules/@shikijs/langs/dist/typescript.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_typescript-j_1H8WHN.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/xml.mjs": {
+    "file": "assets/xml-bCxBCBTM.js",
+    "name": "xml",
+    "src": "node_modules/@shikijs/langs/dist/xml.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "_java-BtIQNnN0.js"
+    ]
+  },
+  "node_modules/@shikijs/langs/dist/yaml.mjs": {
+    "file": "assets/yaml-rwi0_p6S.js",
+    "name": "yaml",
+    "src": "node_modules/@shikijs/langs/dist/yaml.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/themes/dist/github-dark.mjs": {
+    "file": "assets/github-dark-C-LZuMrd.js",
+    "name": "github-dark",
+    "src": "node_modules/@shikijs/themes/dist/github-dark.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/@shikijs/themes/dist/github-light.mjs": {
+    "file": "assets/github-light-EUqPIrTm.js",
+    "name": "github-light",
+    "src": "node_modules/@shikijs/themes/dist/github-light.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/yaml/browser/index.js": {
+    "file": "assets/browser-B4N4yMjR.js",
+    "name": "browser",
+    "src": "node_modules/yaml/browser/index.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js"
+    ]
+  },
+  "node_modules/zudoku/src/app/entry.client.tsx": {
+    "file": "assets/entry.client-2nH3971S.js",
+    "name": "entry.client",
+    "src": "node_modules/zudoku/src/app/entry.client.tsx",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_zod-C_8-g2jb.js",
+      "_mutation-DKeOfJp5.js",
+      "_openapi-C_W_DB0s.js",
+      "_Callout-Ca-OpS4z.js",
+      "_Heading-CUeZvcSH.js",
+      "_lib-DntQlSM5.js",
+      "_shiki-constants-Cbz7E3qi.js",
+      "_Typography-DZ3sbvwz.js",
+      "_react-error-boundary-CBeGuOrh.js",
+      "_Alert-tRbBQ38u.js",
+      "_DeveloperHint-CGP-tNHf.js",
+      "_InlineCode-BlOOxv1o.js",
+      "_Badge-B7zKrzT-.js",
+      "_CodeBlock-BM_bbMX-.js",
+      "_CodeTabPanel-C5xyVcYF.js"
+    ],
+    "dynamicImports": [
+      "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788296496312",
+      "node_modules/zudoku/src/lib/plugins/markdown/MdxPage.tsx",
+      "pages/sensor-reading-format.mdx",
+      "pages/overview.mdx",
+      "pages/common-parameters.mdx",
+      "pages/auth.mdx",
+      "_SyntaxHighlight-DML0q2P6.js",
+      "node_modules/zudoku/src/lib/components/Mermaid.tsx",
+      "node_modules/zudoku/src/lib/ui/CodeTabs.tsx",
+      "_shiki-B6tPqSi2.js",
+      "virtual:zudoku-shiki-register"
+    ],
+    "css": [
+      "assets/entry-BYbzDVpi.css"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/bun.tsx": {
+    "file": "assets/bun-C9a3IrzV.js",
+    "name": "bun",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/bun.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/c.tsx": {
+    "file": "assets/c-BXZAHH-O.js",
+    "name": "c",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/c.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/commonlisp.tsx": {
+    "file": "assets/commonlisp-QAR3s5Or.js",
+    "name": "commonlisp",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/commonlisp.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/cpp.tsx": {
+    "file": "assets/cpp-Cc9k2wgE.js",
+    "name": "cpp",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/cpp.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/csharp.tsx": {
+    "file": "assets/csharp-Deo4ekmZ.js",
+    "name": "csharp",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/csharp.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/css.tsx": {
+    "file": "assets/css-OQ6PK5n_.js",
+    "name": "css",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/css.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/dart.tsx": {
+    "file": "assets/dart-BgZFA2Dw.js",
+    "name": "dart",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/dart.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/elixir.tsx": {
+    "file": "assets/elixir-XNv5q0UH.js",
+    "name": "elixir",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/elixir.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/go.tsx": {
+    "file": "assets/go-DLUvOWOu.js",
+    "name": "go",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/go.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/graphql.tsx": {
+    "file": "assets/graphql-DaoP2vQp.js",
+    "name": "graphql",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/graphql.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/html.tsx": {
+    "file": "assets/html-DKGzcIs5.js",
+    "name": "html",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/html.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/java.tsx": {
+    "file": "assets/java-CfiCYQuT.js",
+    "name": "java",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/java.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/javascript.tsx": {
+    "file": "assets/javascript-DG7redXj.js",
+    "name": "javascript",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/javascript.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/json.tsx": {
+    "file": "assets/json-CvASnE5U.js",
+    "name": "json",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/json.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/kotlin.tsx": {
+    "file": "assets/kotlin-DcP12iv6.js",
+    "name": "kotlin",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/kotlin.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/markdown.tsx": {
+    "file": "assets/markdown-D39CEswd.js",
+    "name": "markdown",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/markdown.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/mdx.tsx": {
+    "file": "assets/mdx-D7cggSN4.js",
+    "name": "mdx",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/mdx.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/npm.tsx": {
+    "file": "assets/npm-BZWSpklZ.js",
+    "name": "npm",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/npm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/objectivec.tsx": {
+    "file": "assets/objectivec-D0zoKNuu.js",
+    "name": "objectivec",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/objectivec.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/ocaml.tsx": {
+    "file": "assets/ocaml-fBhAcRnU.js",
+    "name": "ocaml",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/ocaml.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/php.tsx": {
+    "file": "assets/php-gukyZnDj.js",
+    "name": "php",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/php.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/pnpm.tsx": {
+    "file": "assets/pnpm-DBof__0i.js",
+    "name": "pnpm",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/pnpm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/powershell.tsx": {
+    "file": "assets/powershell-u7cD0oSa.js",
+    "name": "powershell",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/powershell.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/python.tsx": {
+    "file": "assets/python-CArJzsdW.js",
+    "name": "python",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/python.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/react.tsx": {
+    "file": "assets/react-C2bN_ytJ.js",
+    "name": "react",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/react.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/ruby.tsx": {
+    "file": "assets/ruby-C8_obsrc.js",
+    "name": "ruby",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/ruby.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/rust.tsx": {
+    "file": "assets/rust-Cdr-1KZ3.js",
+    "name": "rust",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/rust.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/scala.tsx": {
+    "file": "assets/scala-Ddg-xXe1.js",
+    "name": "scala",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/scala.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/shell.tsx": {
+    "file": "assets/shell-idNA2Xxo.js",
+    "name": "shell",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/shell.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/swift.tsx": {
+    "file": "assets/swift-DPjw20in.js",
+    "name": "swift",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/swift.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/toml.tsx": {
+    "file": "assets/toml-DPNJMwnx.js",
+    "name": "toml",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/toml.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/typescript.tsx": {
+    "file": "assets/typescript-Dfy-6qA9.js",
+    "name": "typescript",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/typescript.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/xml.tsx": {
+    "file": "assets/xml-CpIM-cpT.js",
+    "name": "xml",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/xml.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/yaml.tsx": {
+    "file": "assets/yaml-YbCgkwWH.js",
+    "name": "yaml",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/yaml.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/yarn.tsx": {
+    "file": "assets/yarn-W6B8Bplz.js",
+    "name": "yarn",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/yarn.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/assets/language-icons/zig.tsx": {
+    "file": "assets/zig-DAuHcKn_.js",
+    "name": "zig",
+    "src": "node_modules/zudoku/src/lib/assets/language-icons/zig.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/components/Markdown.tsx": {
+    "file": "assets/Markdown-3n9z5RGt.js",
+    "name": "Markdown",
+    "src": "node_modules/zudoku/src/lib/components/Markdown.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Markdown-Cg2Y60Sz.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/components/Mermaid.tsx": {
+    "file": "assets/Mermaid-VfFiTVA1.js",
+    "name": "Mermaid",
+    "src": "node_modules/zudoku/src/lib/components/Mermaid.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_Alert-tRbBQ38u.js"
+    ],
+    "dynamicImports": [
+      "__vite-optional-peer-dep:mermaid:zudoku"
+    ]
+  },
+  "node_modules/zudoku/src/lib/components/navigation/motionFeatures.ts": {
+    "file": "assets/motionFeatures-DkbJ48cP.js",
+    "name": "motionFeatures",
+    "src": "node_modules/zudoku/src/lib/components/navigation/motionFeatures.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/graphiql/loadGraphiQLFromCdn.ts": {
+    "file": "assets/loadGraphiQLFromCdn-zEMElFiY.js",
+    "name": "loadGraphiQLFromCdn",
+    "src": "node_modules/zudoku/src/lib/graphiql/loadGraphiQLFromCdn.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_loadGraphiQLFromCdn-DwF1Ayux.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/markdown/MdxPage.tsx": {
+    "file": "assets/MdxPage-NYdPU99y.js",
+    "name": "MdxPage",
+    "src": "node_modules/zudoku/src/lib/plugins/markdown/MdxPage.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_Heading-CUeZvcSH.js",
+      "_Popover-JhZdpPst.js",
+      "_lib-DntQlSM5.js",
+      "_Typography-DZ3sbvwz.js",
+      "_DeveloperHint-CGP-tNHf.js",
+      "_AiAssistantMenuItems-CuUeYyfB.js",
+      "_Toc-DWphwLxu.js",
+      "_Pagination-C6l6HoJl.js",
+      "_slugify-bXvLWs_E.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/OasProvider.tsx": {
+    "file": "assets/OasProvider-Bs4OC4qT.js",
+    "name": "OasProvider",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/OasProvider.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_openapi-C_W_DB0s.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/OperationList.tsx": {
+    "file": "assets/OperationList-bfnigBB8.js",
+    "name": "OperationList",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/OperationList.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_drawer-DH2oymEx.js",
+      "_zod-C_8-g2jb.js",
+      "_PlaygroundDialog-JShuyByh.js",
+      "_openapi-C_W_DB0s.js",
+      "_Callout-Ca-OpS4z.js",
+      "_Heading-CUeZvcSH.js",
+      "_Popover-JhZdpPst.js",
+      "_Markdown-Cg2Y60Sz.js",
+      "_Typography-DZ3sbvwz.js",
+      "_InlineCode-BlOOxv1o.js",
+      "_Badge-B7zKrzT-.js",
+      "_Pagination-C6l6HoJl.js",
+      "_Item-DF2pfSMV.js",
+      "_dist-JhRxQfAn.js",
+      "_SchemaView-C89poh2A.js",
+      "_Card-BtTjrp4A.js",
+      "_SyntaxHighlight-DML0q2P6.js",
+      "_securityCredentialsStore-C38489-s.js",
+      "_useWarmupSchema-wa9aVpJN.js"
+    ],
+    "dynamicImports": [
+      "_Markdown-Cg2Y60Sz.js",
+      "node_modules/zudoku/src/lib/plugins/openapi/playground/GraphiQL.tsx",
+      "_loadGraphiQLFromCdn-DwF1Ayux.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/SchemaInfo.tsx": {
+    "file": "assets/SchemaInfo-D6Lz6ssN.js",
+    "name": "SchemaInfo",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/SchemaInfo.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_openapi-C_W_DB0s.js",
+      "_Popover-JhZdpPst.js",
+      "_Markdown-Cg2Y60Sz.js",
+      "_Badge-B7zKrzT-.js",
+      "_slugify-bXvLWs_E.js",
+      "_Item-DF2pfSMV.js",
+      "_Card-BtTjrp4A.js",
+      "_useWarmupSchema-wa9aVpJN.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/SchemaList.tsx": {
+    "file": "assets/SchemaList-Bo8acQFt.js",
+    "name": "SchemaList",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/SchemaList.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_openapi-C_W_DB0s.js",
+      "_Heading-CUeZvcSH.js",
+      "_Toc-DWphwLxu.js",
+      "_slugify-bXvLWs_E.js",
+      "_Item-DF2pfSMV.js",
+      "_SchemaView-C89poh2A.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/client/createServer.ts": {
+    "file": "assets/createServer-DGzMgzLx.js",
+    "name": "createServer",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/client/createServer.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_app-BJBOnTyW.js",
+      "_slugify-bXvLWs_E.js",
+      "_constants-DezTRlnT.js"
+    ],
+    "dynamicImports": [
+      "node_modules/yaml/browser/index.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/playground/GraphiQL.tsx": {
+    "file": "assets/GraphiQL-DXwirYRG.js",
+    "name": "GraphiQL",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/playground/GraphiQL.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_react-error-boundary-CBeGuOrh.js",
+      "_Alert-tRbBQ38u.js",
+      "_loadGraphiQLFromCdn-DwF1Ayux.js",
+      "_securityCredentialsStore-C38489-s.js"
+    ],
+    "dynamicImports": [
+      "_SyntaxHighlight-DML0q2P6.js"
+    ],
+    "css": [
+      "assets/GraphiQL-CUPUdpLP.css"
+    ]
+  },
+  "node_modules/zudoku/src/lib/plugins/openapi/playground/PlaygroundDialog.tsx": {
+    "file": "assets/PlaygroundDialog-BavQMU1z.js",
+    "name": "PlaygroundDialog",
+    "src": "node_modules/zudoku/src/lib/plugins/openapi/playground/PlaygroundDialog.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_PlaygroundDialog-JShuyByh.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/shiki.ts": {
+    "file": "assets/shiki-Dj9LS_Jk.js",
+    "name": "shiki",
+    "src": "node_modules/zudoku/src/lib/shiki.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_shiki-constants-Cbz7E3qi.js",
+      "_shiki-B6tPqSi2.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/ui/CodeTabs.tsx": {
+    "file": "assets/CodeTabs-jaL-8kCY.js",
+    "name": "CodeTabs",
+    "src": "node_modules/zudoku/src/lib/ui/CodeTabs.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_app-BJBOnTyW.js",
+      "_shiki-B6tPqSi2.js",
+      "_CodeBlock-BM_bbMX-.js",
+      "_CodeTabPanel-C5xyVcYF.js",
+      "_dist-JhRxQfAn.js",
+      "_SyntaxHighlight-DML0q2P6.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/ui/SyntaxHighlight.tsx": {
+    "file": "assets/SyntaxHighlight-CUEmUnMr.js",
+    "name": "SyntaxHighlight",
+    "src": "node_modules/zudoku/src/lib/ui/SyntaxHighlight.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_SyntaxHighlight-DML0q2P6.js"
+    ]
+  },
+  "node_modules/zudoku/src/lib/util/hastToJsx.tsx": {
+    "file": "assets/hastToJsx-iSeT1edL.js",
+    "name": "hastToJsx",
+    "src": "node_modules/zudoku/src/lib/util/hastToJsx.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-CNC7AqOf.js",
+      "_motion-BtDFqjAV.js",
+      "_lib-DntQlSM5.js",
+      "_lib-Co4Medk2.js"
+    ]
+  },
+  "pages/auth.mdx": {
+    "file": "assets/auth-BTv_-xpi.js",
+    "name": "auth",
+    "src": "pages/auth.mdx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_lib-DntQlSM5.js"
+    ]
+  },
+  "pages/common-parameters.mdx": {
+    "file": "assets/common-parameters-B26jVvuX.js",
+    "name": "common-parameters",
+    "src": "pages/common-parameters.mdx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_lib-DntQlSM5.js"
+    ]
+  },
+  "pages/overview.mdx": {
+    "file": "assets/overview-BRtKR-zw.js",
+    "name": "overview",
+    "src": "pages/overview.mdx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_lib-DntQlSM5.js"
+    ]
+  },
+  "pages/sensor-reading-format.mdx": {
+    "file": "assets/sensor-reading-format-Cgw40bP7.js",
+    "name": "sensor-reading-format",
+    "src": "pages/sensor-reading-format.mdx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_motion-BtDFqjAV.js",
+      "_lib-DntQlSM5.js"
+    ]
+  },
+  "virtual:zudoku-shiki-register": {
+    "file": "assets/_virtual_zudoku-shiki-register-pexNjE_h.js",
+    "name": "_virtual_zudoku-shiki-register",
+    "src": "virtual:zudoku-shiki-register",
+    "isDynamicEntry": true,
+    "imports": [
+      "_app-BJBOnTyW.js"
+    ],
+    "dynamicImports": [
+      "node_modules/@shikijs/themes/dist/github-light.mjs",
+      "node_modules/@shikijs/themes/dist/github-dark.mjs",
+      "node_modules/@shikijs/langs/dist/shellscript.mjs",
+      "_javascript-BzbQS41l.js",
+      "_jsx-D3KKoC5L.js",
+      "_typescript-j_1H8WHN.js",
+      "_tsx-BOvsFOI6.js",
+      "node_modules/@shikijs/langs/dist/json.mjs",
+      "node_modules/@shikijs/langs/dist/jsonc.mjs",
+      "node_modules/@shikijs/langs/dist/yaml.mjs",
+      "node_modules/@shikijs/langs/dist/python.mjs",
+      "_java-BtIQNnN0.js",
+      "node_modules/@shikijs/langs/dist/go.mjs",
+      "node_modules/@shikijs/langs/dist/graphql.mjs",
+      "node_modules/@shikijs/langs/dist/html.mjs",
+      "_css-LbU1hoFO.js",
+      "node_modules/@shikijs/langs/dist/xml.mjs",
+      "node_modules/@shikijs/langs/dist/markdown.mjs",
+      "node_modules/@shikijs/langs/dist/mdx.mjs"
+    ]
+  }
+}
