@@ -1,0 +1,598 @@
+openapi: 3.0.3
+
+info:
+  title: Kaiterra API
+  version: "2025-02-26"
+  description: |
+    The Kaiterra API allows your programs to access the air quality data reported by your [Sensedge](https://www.kaiterra.com/sensedge), [Sensedge Mini](https://www.kaiterra.com/sensedge-mini), or other device.
+
+servers:
+  - url: https://api.kaiterra.com/v1
+
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Devices
+    description: Data and metadata for all types of Kaiterra devices are available under the `/devices` endpoint.
+  - name: Other
+    description: Batch requests and other utility endpoints.
+
+paths:
+  /devices/{id}:
+    get:
+      operationId: getDeviceMetadata
+      summary: Device metadata
+      tags:
+        - Devices
+      description: |
+        Retrieves metadata, such as name and firmware version, for the given device.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Device unique ID
+          schema:
+            type: string
+          example: 00000000-0031-0101-0000-00007e57c0de
+      responses:
+        "200":
+          description: Metadata for the requested device.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Device"
+              example:
+                id: 00000000-0031-0101-0000-00007e57c0de
+                name: Office
+                model: SE-100
+                firmware_version: 1.15.0.2
+                home_region: row.europe
+                handshake:
+                  _device_ts: "2022-07-25T02:48:00Z"
+                  dmac_eth: "00:00:00:00:0F:FF"
+                  dmac_wifi: "54:86:FF:28:04:87"
+                  dsn: VC27911111
+                  modules:
+                    - bay: 0
+                      serial: VH21110009
+                      type: KM-103
+                      lifetime_pct: 29.96
+                    - bay: 1
+                      serial: VH21110010
+                      type: KM-100
+                      lifetime_pct: 29.94
+                  ts: "2022-07-25T02:47:59Z"
+        "404":
+          description: Indicates that a device with the given UDID has not yet been registered.
+
+  /devices/{id}/top:
+    get:
+      operationId: getLatestSensorReading
+      summary: Latest sensor reading
+      tags:
+        - Devices
+      description: |
+        Retrieves the last sensor reading uploaded by the device.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique ID of the device whose details are being requested.
+          schema:
+            type: string
+          example: 00000000-0031-0101-0000-00007e57c0de
+      responses:
+        "200":
+          description: The device's most recent sensor reading is returned.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SensorReadings"
+              example:
+                data:
+                  - param: rco2
+                    units: ppm
+                    span: 60
+                    points:
+                      - ts: "2020-06-17T06:40:00Z"
+                        value: 1673
+                  - param: rhumid
+                    source: km102
+                    units: "%"
+                    span: 60
+                    points:
+                      - ts: "2020-06-17T06:40:00Z"
+                        value: 55.81
+                  - param: rpm10c
+                    source: km100
+                    units: µg/m³
+                    span: 60
+                    points:
+                      - ts: "2020-06-17T06:40:00Z"
+                        value: 125
+                  - param: rpm25c
+                    source: km100
+                    units: µg/m³
+                    span: 60
+                    points:
+                      - ts: "2020-06-17T06:40:00Z"
+                        value: 169
+                  - param: rtemp
+                    source: km102
+                    units: C
+                    span: 60
+                    points:
+                      - ts: "2020-06-17T06:40:00Z"
+                        value: 26.25
+                  - param: rtvoc
+                    source: km102
+                    units: ppb
+                    span: 60
+                    points:
+                      - ts: "2020-06-17T06:40:00Z"
+                        value: 397
+
+  /devices/{id}/history:
+    get:
+      operationId: getHistoricalSensorReadings
+      summary: Historical sensor readings
+      tags:
+        - Devices
+      description: |
+        Retrieves sensor air quality historical data using the specified parameters. Returned data points are marked with the _end_ of the sampling interval; for instance, the one hour average from 1pm to 2pm is marked with a timestamp of 14:00, **not** 13:00. All available intervals that overlap the requested range are returned. If data is unavailable, it is omitted or `null` is the value for that data point.
+
+        Notes on display of hourly and daily data:
+
+        - Time stamps are returned in UTC, so they must be converted back to local time for display. Recall that the timestamp of an interval is the _end_ of that interval, so data for the 10th of January UTC is stamped 2017-01-11T00:00:00Z. You will probably want to subtract a day before displaying the data's date.
+
+        Notes on data availability:
+
+        - Hourly and daily averages are computed only after the hour- or day-long average window has already closed. Furthermore, late-arriving data may continue to contribute to the averages _even after the window has closed_. In particular, Sensedges that lose internet connectivity will buffer data indefinitely, then upload it when connectivity is restored.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Laser egg unique ID
+          schema:
+            type: string
+          example: 00000000-0001-0101-0000-00007e57c0de
+        - name: begin
+          in: query
+          required: false
+          description: Beginning timestamp of the data being requested. Default is 1 week (168 hours) before `end`.
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: Ending timestamp of the data being requested. If unspecified, the current UTC time is used.
+          schema:
+            type: string
+          example: "2017-01-17T10:24:12Z"
+        - name: limit
+          in: query
+          required: false
+          description: Retrieves only the latest N data points. This value has no upper limit; if the number of results is too large to fit into a single response, pagination is used to allow the client to continue the query.
+          schema:
+            type: number
+          example: 10
+        - name: group_by
+          in: query
+          required: false
+          description: "Performs time averaging on the raw data. Valid intervals are: `1m`, `5m`, `15m`, or any number of minutes that divides evenly into one hour; `1h`, `2h`, or any whole number of hours that divides evenly into one day; or `1d`. Use of larger averaging intervals requires use of the `time_zone` parameter to specify where hour or day boundaries lie."
+          schema:
+            type: string
+          example: 15m
+        - name: time_zone
+          in: query
+          required: false
+          description: Defines the hourly and daily averaging window boundaries for larger values of `group_by`. Must be an entry from the [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+          schema:
+            type: string
+          example: Europe/Brussels
+      responses:
+        "200":
+          description: |
+            The the `data` array contains available data in the query range, in ascending order by timestamp, subject to the defaults for `begin` and `end` described above. For queries that return large amounts of data (for example, more than one week of raw data), see the pagination example below.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SensorReadingsPage"
+              examples:
+                rawData:
+                  summary: Raw data
+                  value:
+                    data:
+                      - param: rhumid
+                        units: "%"
+                        span: 60
+                        points:
+                          - ts: "2020-06-17T06:25:00Z"
+                            value: 33
+                          - ts: "2020-06-17T06:30:00Z"
+                            value: 81
+                          - ts: "2020-06-17T06:35:00Z"
+                            value: 43
+                          - ts: "2020-06-17T06:40:00Z"
+                            value: 55
+                          - ts: "2020-06-17T06:45:00Z"
+                            value: 44
+                      - param: rpm10c
+                        units: µg/m³
+                        span: 60
+                        points:
+                          - ts: "2020-06-17T06:25:00Z"
+                            value: 120
+                          - ts: "2020-06-17T06:30:00Z"
+                            value: 120
+                          - ts: "2020-06-17T06:35:00Z"
+                            value: 120
+                          - ts: "2020-06-17T06:40:00Z"
+                            value: 120
+                          - ts: "2020-06-17T06:45:00Z"
+                            value: 120
+                      - param: rpm25c
+                        units: µg/m³
+                        span: 60
+                        points:
+                          - ts: "2020-06-17T06:25:00Z"
+                            value: 234
+                          - ts: "2020-06-17T06:30:00Z"
+                            value: 135
+                          - ts: "2020-06-17T06:35:00Z"
+                            value: 250
+                          - ts: "2020-06-17T06:40:00Z"
+                            value: 205
+                          - ts: "2020-06-17T06:45:00Z"
+                            value: 192
+                      - param: rtemp
+                        units: C
+                        span: 60
+                        points:
+                          - ts: "2020-06-17T06:25:00Z"
+                            value: 12
+                          - ts: "2020-06-17T06:30:00Z"
+                            value: -3
+                          - ts: "2020-06-17T06:35:00Z"
+                            value: 39
+                          - ts: "2020-06-17T06:40:00Z"
+                            value: 3
+                          - ts: "2020-06-17T06:45:00Z"
+                            value: 13
+                      - param: rtvoc
+                        units: ppb
+                        span: 60
+                        points:
+                          - ts: "2020-06-17T06:25:00Z"
+                            value: 369
+                          - ts: "2020-06-17T06:30:00Z"
+                            value: 313
+                          - ts: "2020-06-17T06:35:00Z"
+                            value: 303
+                          - ts: "2020-06-17T06:40:00Z"
+                            value: 397
+                          - ts: "2020-06-17T06:45:00Z"
+                            value: 234
+                hourlyAverageData:
+                  summary: Hourly average data
+                  description: |
+                    When `group_by` is `1h`, hourly data is reported. This example is for `time_zone=Asia/Kathmandu`, which has a UTC offset of +5:45; the hourly divisions happen on the hour in local time, which in UTC time is not 45 but 15 minutes after the hour.
+                  value:
+                    data:
+                      - param: rpm25c
+                        units: µg/m³
+                        span: 3600
+                        points:
+                          - ts: "2020-06-17T02:15:00Z"
+                            value: 195.3
+                          - ts: "2020-06-17T03:15:00Z"
+                            value: 192.5
+                          - ts: "2020-06-17T04:15:00Z"
+                            value: 198.5
+                          - ts: "2020-06-17T05:15:00Z"
+                            value: 208
+                          - ts: "2020-06-17T06:15:00Z"
+                            value: 211.1
+                      - "...": "..."
+                paginationForLargeAmountsOfData:
+                  summary: Pagination for large amounts of data
+                  description: |
+                    Since most devices record a sensor reading once per minute, requesting a week or more of data results in very large response bodies -- for example, the compressed size of a reponse body for 10,000 items can approach 1 megabyte. So, a single response body is capped around 10,000 items, with items with the **latest timestamps** being returned first, along with a link to the next "page" of data.
+
+                    **Warning**: This item count cap is subject to change without notice. Clients must not hard-code this value.
+
+                    The link to the next page in the results is returned under `_links`, `next`. This is an absolute URL; just add your auth credentials and make the call.
+                  value:
+                    _links:
+                      next: https://api.kaiterra.com/v1/devices/00000000-0001-0101-0000-00007e57c0de/history?begin=2020-06-10T06%3A29%3A00Z&end=2020-06-17T06%3A29%3A00Z
+                    data:
+                      - param: rpm25c
+                        units: µg/m³
+                        span: 60
+                        points:
+                          - "...": "..."
+                          - ts: "2020-06-17T06:30:00Z"
+                            value: 135
+                          - ts: "2020-06-17T06:35:00Z"
+                            value: 250
+                          - ts: "2020-06-17T06:40:00Z"
+                            value: 205
+                          - ts: "2020-06-17T06:45:00Z"
+                            value: 192
+                          - ts: "2020-06-17T06:50:00Z"
+                            value: 206
+                      - "...": "..."
+        "400":
+          description: The request is improperly formatted; check the response body for additional context. Also, if the entire time range (after defaults for unspecified parameters are applied) lies more than one hour in the future, this error code is returned.
+        "403":
+          description: The API key used does not grant access to this device's data.
+        "404":
+          description: A device with the given UDID has not yet been registered.
+
+  /batch:
+    post:
+      operationId: submitBatchRequest
+      summary: Submit a batch request
+      tags:
+        - Other
+      description: |
+        This endpoint makes it faster to make many API requests against the Kaiterra API.
+
+        For example: the API request to get a sensor's latest reading, `GET /devices/{id}/top`, typically takes less than 1ms of processing time on the server. This means the time for your application to retrieve the data will be dominated by the round-trip time to Kaiterra's servers and back. If you need to get data for many devices, then that round-trip time becomes non-negligible.
+
+        The `POST /batch` endpoint allows you to make up to 100 API requests at once, with only one round-trip. For endpoints like `GET /devices/{id}/top`, you'll get the information nearly 100 times faster than if you had made the requests individually.
+
+        The format is nearly identical to [Facebook's batch request API](https://developers.facebook.com/docs/graph-api/making-multiple-requests), except that there is no support for dependent requests and other advanced features.
+
+        Authentication parameters, such as the `key` URL parameter, must be included in URL or headers of the POST batch request. Each "sub-request" inherits the auth context of the POST batch request; any auth parameters on the sub-requests will be ignored. Therefore, it's possible that some sub-requests will succeed, and others will fail with `403 Forbidden`.
+
+        While the JSON objects in the batch response will be in the same order as the objects in the batch request, the relative order in which the server fulfills each request is undefined. For example, in a batch request that contains a `PATCH` and a `GET` request on the same resource, the result of the `GET` request **may or may not reflect** the changes made by the `PATCH` request.
+
+        Not every endpoint may be invoked through a batch request. The `relative_url` of each sub-request must match one of the following patterns, using any HTTP method that the endpoint itself supports:
+
+        - `/devices/{id}/top`
+        - `/devices/{id}`
+        - `/devices/{id}/history`
+
+        A sub-request for an endpoint that exists but is not listed above fails with `400 Bad Request`, and its `body` names the patterns that are accepted. A sub-request whose `relative_url` does not correspond to any endpoint fails with `404 Not Found`, exactly as it would outside of a batch. In both cases the failure is confined to that one sub-request: the batch request itself still returns HTTP 200, and the remaining sub-requests are fulfilled normally.
+      parameters:
+        - name: include_headers
+          in: query
+          required: false
+          description: Whether to include the response headers for individual responses.
+          schema:
+            type: boolean
+            default: false
+        - name: follow_redirects
+          in: query
+          required: false
+          description: Whether to follow redirect if it responds with redirect.
+          schema:
+            type: boolean
+            default: true
+      requestBody:
+        required: true
+        description: The batch request body is a JSON array of request objects. Each object must have a `method` and `relative_url` property; other properties are optional.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/BatchSubRequest"
+            example:
+              - method: GET
+                relative_url: /devices/00000000-0001-0101-0000-00007e57c0de/top
+              - method: GET
+                relative_url: /devices/00000000-0031-0001-0000-00007e57c0de/top
+      responses:
+        "200":
+          description: Returns the result of each of the requested operations, with the body returned as a JSON string. Note that HTTP 200 will be returned as long as the batch request itself did not fail processing, even if none of the sub-requests succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BatchSubResponse"
+              example:
+                - body: '{"data":[{"param":"rhumid","units":"%","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":54}]},{"param":"rpm10c","units":"µg/m³","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":120}]},{"param":"rpm25c","units":"µg/m³","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":191}]},{"param":"rtemp","units":"C","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":16}]},{"param":"rtvoc","units":"ppb","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":342}]}]}'
+                  code: 200
+                - body: '{"data":[{"param":"rco2","units":"ppm","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":1673}]},{"param":"rhumid","source":"km102","units":"%","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":54.79}]},{"param":"rpm10c","source":"km100","units":"µg/m³","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":125}]},{"param":"rpm25c","source":"km100","units":"µg/m³","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":275}]},{"param":"rtemp","source":"km102","units":"C","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":20.57}]},{"param":"rtvoc","source":"km102","units":"ppb","span":60,"points":[{"ts":"2020-06-17T07:05:00Z","value":435.6}]}]}'
+                  code: 200
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
+      description: |
+        All requests to the API must be authenticated. Get your API key by signing up at [app.kaiterra.com](https://app.kaiterra.com).
+
+        When issuing an HTTP request, the client includes the key in a URL parameter called `key` (this is how e.g. Google Maps works). All requests must use HTTPS, so the key is [safe from eavesdropping](https://stackoverflow.com/questions/499591/are-https-urls-encrypted). This method is simple, but it's only suitable for clients that are running on trusted devices, such as a server you control, or a researcher's workstation. These keys must NOT be embedded directly into web pages, or iOS or Android apps.
+
+        If authentication information is required but not present, or if it is not accepted, HTTP 401 is returned.
+
+  schemas:
+    Device:
+      type: object
+      description: Metadata, such as name and firmware version, for a device.
+      properties:
+        id:
+          type: string
+          description: Unique ID (UDID) of the device.
+        name:
+          type: string
+          description: Friendly name of the device assigned by the owner in the mobile app or dashboard.
+        model:
+          type: string
+          description: Model number of the device.
+        firmware_version:
+          type: string
+          description: The last reported firmware version of the device.
+        home_region:
+          type: string
+          description: Home region of the current device.
+        handshake:
+          $ref: "#/components/schemas/Handshake"
+
+    Handshake:
+      type: object
+      description: Extended metadata reported by the device in its last hourly handshake.
+      properties:
+        _device_ts:
+          type: string
+          description: The device's internal clock
+        dmac_eth:
+          type: string
+          description: The device's Ethernet MAC address, if applicable. Reported as either `dmac_eth` or `dmac_ethernet`.
+        dmac_ethernet:
+          type: string
+          description: The device's Ethernet MAC address, if applicable. Reported as either `dmac_eth` or `dmac_ethernet`.
+        dmac_wifi:
+          type: string
+          description: The device's Wifi MAC address. Reported as either `dmac_wifi` or `dmac`.
+        dmac:
+          type: string
+          description: The device's Wifi MAC address. Reported as either `dmac_wifi` or `dmac`.
+        dsn:
+          type: string
+          description: The device's serial number
+        "sbay102.slifetime":
+          type: number
+          deprecated: true
+          description: "*Deprecated; use `modules` instead.* The fraction of useful sensor module lifetime remaining (left sensor bay). Only populated for SE-100 and SE-200 devices."
+        "sbay102.stype":
+          type: string
+          deprecated: true
+          description: "*Deprecated; use `modules` instead.* The model number of the sensor module installed (left sensor bay). Only populated for SE-100 and SE-200 devices."
+        "sbay103.slifetime":
+          type: number
+          deprecated: true
+          description: "*Deprecated; use `modules` instead.* The fraction of useful sensor module lifetime remaining (right sensor bay). Only populated for SE-100 and SE-200 devices."
+        "sbay103.stype":
+          type: string
+          deprecated: true
+          description: "*Deprecated; use `modules` instead.* The model number of the sensor module installed (right sensor bay). Only populated for SE-100 and SE-200 devices."
+        modules:
+          type: array
+          description: One entry per installed sensor module. Populated for all device models that report module information (SE-100, SE-200, SE-300).
+          items:
+            $ref: "#/components/schemas/SensorModule"
+        ts:
+          type: string
+          description: The timestamp on the server when the handshake was received
+
+    SensorModule:
+      type: object
+      description: Describes one installed sensor module.
+      required:
+        - bay
+      properties:
+        bay:
+          type: number
+          description: The sensor module bay this entry describes. `0` is the left bay, `1` is the right bay.
+        serial:
+          type: string
+          description: The serial number of the installed sensor module.
+        type:
+          type: string
+          description: The model number of the installed sensor module (for example, `KM-103`, `KM-207`, `KM-300`).
+        lifetime_pct:
+          type: number
+          description: The percentage of useful sensor module lifetime remaining, on a 0-100 scale, rounded to 4 significant figures.
+
+    SensorReadings:
+      type: object
+      description: Sensor readings, returned as an array of parameters, with a series of data points under each parameter.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ParameterSeries"
+
+    SensorReadingsPage:
+      description: Sensor readings, with an optional link to the next page of data for queries that return large amounts of data.
+      allOf:
+        - $ref: "#/components/schemas/SensorReadings"
+        - type: object
+          properties:
+            _links:
+              type: object
+              description: Pagination links, present when the result set is too large to fit into a single response.
+              properties:
+                next:
+                  type: string
+                  description: Absolute URL of the next "page" of data; just add your auth credentials and make the call.
+
+    ParameterSeries:
+      type: object
+      description: A series of data points for a single measured parameter.
+      properties:
+        param:
+          type: string
+          description: The parameter code. See the Sensor Reading Data Format guide for the list of parameter codes.
+        units:
+          type: string
+          description: The units under which the parameter is expressed. See the Sensor Reading Data Format guide for the list of unit codes.
+        source:
+          type: string
+          description: (Present for sensor modules) The module that captured the parameter reading. For instance, `km102` identifies the KM-102 sensor module.
+        span:
+          type: number
+          description: The sampling interval, in seconds, over which this measurement was taken. For example, 60 refers to a sample taken over the span of one minute, and 3600 designates hourly averages.
+        points:
+          type: array
+          description: The actual array of data points for this series. Even if the series has only one data point, this is still an array.
+          items:
+            $ref: "#/components/schemas/DataPoint"
+
+    DataPoint:
+      type: object
+      description: A single measurement in a parameter series.
+      properties:
+        ts:
+          type: string
+          description: Timestamp marking the end of the sampling interval, in RFC3339 format (UTC).
+        value:
+          type: number
+          nullable: true
+          description: The measured value. May be `null` if data is unavailable for this data point.
+
+    BatchSubRequest:
+      type: object
+      description: One request within a batch.
+      required:
+        - method
+        - relative_url
+      properties:
+        method:
+          type: string
+          description: The HTTP method to use.
+        relative_url:
+          type: string
+          description: The URL to request, relative to the Kaiterra API's base URL.
+        headers:
+          type: array
+          description: A JSON array of header description objects, each of which has a `name` and `value` object.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+        body:
+          type: string
+          description: The request body for this request. JSON objects must be JSON-encoded before being placed in this string.
+
+    BatchSubResponse:
+      type: object
+      description: The result of one request within a batch.
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code returned by this sub-request.
+        body:
+          type: string
+          description: The response body of this sub-request, returned as a JSON string.

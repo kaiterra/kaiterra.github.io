@@ -430,10 +430,10 @@
     "file": "assets/zod-C_8-g2jb.js",
     "name": "zod"
   },
-  "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788296496312": {
+  "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788392383517": {
     "file": "assets/api-openapi.yaml-D3X1-6Ak.js",
     "name": "api-openapi.yaml",
-    "src": "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788296496312",
+    "src": "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788392383517",
     "isDynamicEntry": true
   },
   "node_modules/@shikijs/langs/dist/css.mjs": {
@@ -591,7 +591,7 @@
     ]
   },
   "node_modules/zudoku/src/app/entry.client.tsx": {
-    "file": "assets/entry.client-2nH3971S.js",
+    "file": "assets/entry.client-D9fHmrOa.js",
     "name": "entry.client",
     "src": "node_modules/zudoku/src/app/entry.client.tsx",
     "isEntry": true,
@@ -616,7 +616,7 @@
       "_CodeTabPanel-C5xyVcYF.js"
     ],
     "dynamicImports": [
-      "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788296496312",
+      "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788392383517",
       "node_modules/zudoku/src/lib/plugins/markdown/MdxPage.tsx",
       "pages/sensor-reading-format.mdx",
       "pages/overview.mdx",
