@@ -430,10 +430,10 @@
     "file": "assets/zod-C_8-g2jb.js",
     "name": "zod"
   },
-  "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788392383517": {
+  "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788813836627": {
     "file": "assets/api-openapi.yaml-D3X1-6Ak.js",
     "name": "api-openapi.yaml",
-    "src": "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788392383517",
+    "src": "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788813836627",
     "isDynamicEntry": true
   },
   "node_modules/@shikijs/langs/dist/css.mjs": {
@@ -591,7 +591,7 @@
     ]
   },
   "node_modules/zudoku/src/app/entry.client.tsx": {
-    "file": "assets/entry.client-D9fHmrOa.js",
+    "file": "assets/entry.client-pO44pvMl.js",
     "name": "entry.client",
     "src": "node_modules/zudoku/src/app/entry.client.tsx",
     "isEntry": true,
@@ -616,7 +616,7 @@
       "_CodeTabPanel-C5xyVcYF.js"
     ],
     "dynamicImports": [
-      "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788392383517",
+      "node_modules/.zudoku/processed/api-openapi.yaml.js?d=1788813836627",
       "node_modules/zudoku/src/lib/plugins/markdown/MdxPage.tsx",
       "pages/sensor-reading-format.mdx",
       "pages/overview.mdx",
@@ -629,7 +629,7 @@
       "virtual:zudoku-shiki-register"
     ],
     "css": [
-      "assets/entry-BYbzDVpi.css"
+      "assets/entry-DLS-YdRo.css"
     ]
   },
   "node_modules/zudoku/src/lib/assets/language-icons/bun.tsx": {
@@ -1192,7 +1192,7 @@
     ]
   },
   "pages/auth.mdx": {
-    "file": "assets/auth-BTv_-xpi.js",
+    "file": "assets/auth-O9uLyyww.js",
     "name": "auth",
     "src": "pages/auth.mdx",
     "isDynamicEntry": true,
@@ -1202,7 +1202,7 @@
     ]
   },
   "pages/common-parameters.mdx": {
-    "file": "assets/common-parameters-B26jVvuX.js",
+    "file": "assets/common-parameters-B9Dw1Z6I.js",
     "name": "common-parameters",
     "src": "pages/common-parameters.mdx",
     "isDynamicEntry": true,
@@ -1212,7 +1212,7 @@
     ]
   },
   "pages/overview.mdx": {
-    "file": "assets/overview-BRtKR-zw.js",
+    "file": "assets/overview-D095eyFh.js",
     "name": "overview",
     "src": "pages/overview.mdx",
     "isDynamicEntry": true,
@@ -1222,7 +1222,7 @@
     ]
   },
   "pages/sensor-reading-format.mdx": {
-    "file": "assets/sensor-reading-format-Cgw40bP7.js",
+    "file": "assets/sensor-reading-format-CwDbbd-7.js",
     "name": "sensor-reading-format",
     "src": "pages/sensor-reading-format.mdx",
     "isDynamicEntry": true,
