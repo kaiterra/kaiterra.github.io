@@ -42,26 +42,27 @@ Each series under `data` has the following properties:
 
 ## Parameter Codes
 
-| Code                   | Meaning                                                          | Default Units |
-| ---------------------- | ---------------------------------------------------------------- | ------------- |
-| `rco2`                 | Carbon dioxide                                                   | ppm           |
-| `ro3`                  | Ozone                                                            | ppb           |
-| `rpm1c`                | PM1                                                              | µg/m³         |
-| `rpm25c`               | PM2.5                                                            | µg/m³         |
-| `rpm10c`               | PM10                                                             | µg/m³         |
-| `rhumid`               | Relative humidity                                                | %             |
-| `rtemp`                | Temperature                                                      | C             |
-| `tvoc`                 | Total Volatile Organic Compounds (TVOC)                          | ppb           |
-| `pir`                  | Passive infrared (0: no movement detected; 1: movement detected) | x             |
-| `atmospheric_pressure` | Ambient atmospheric pressure                                     | Pa            |
-| `light_clear`          | Illuminance measured with no filter                              | lx            |
-| `light_red`            | Illuminance measured through a red filter                        | lx            |
-| `light_green`          | Illuminance measured through a green filter                      | lx            |
-| `light_blue`           | Illuminance measured through a blue filter                       | lx            |
-| `light_ir`             | Illuminance measured through an infrared filter                  | lx            |
-| `cct`                  | Correlated Color Temperature                                     | K             |
-| `co`                   | Carbon monoxide                                                  | ppm           |
-| `no2`                  | Nitrogen dioxide (NO2)                                           | ppb           |
+| Code                   | Meaning                                                                                                          | Default Units |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------- |
+| `rco2`                 | Carbon dioxide                                                                                                   | ppm           |
+| `ro3`                  | Ozone                                                                                                            | ppb           |
+| `rpm1c`                | PM1                                                                                                              | µg/m³         |
+| `rpm25c`               | PM2.5                                                                                                            | µg/m³         |
+| `rpm10c`               | PM10                                                                                                             | µg/m³         |
+| `rhumid`               | Relative humidity                                                                                                | %             |
+| `rtemp`                | Temperature                                                                                                      | C             |
+| `tvoc`                 | Total Volatile Organic Compounds (TVOC)                                                                          | ppb           |
+| `pir`                  | Passive infrared (0: no movement detected; 1: movement detected)                                                 | x             |
+| `atmospheric_pressure` | Ambient atmospheric pressure                                                                                     | Pa            |
+| `light_clear`          | Illuminance measured with no filter                                                                              | lx            |
+| `light_red`            | Illuminance measured through a red filter                                                                        | lx            |
+| `light_green`          | Illuminance measured through a green filter                                                                      | lx            |
+| `light_blue`           | Illuminance measured through a blue filter                                                                       | lx            |
+| `light_ir`             | Illuminance measured through an infrared filter                                                                  | lx            |
+| `cct`                  | Correlated Color Temperature                                                                                     | K             |
+| `co`                   | Carbon monoxide                                                                                                  | ppm           |
+| `no2`                  | Nitrogen dioxide (NO2)                                                                                           | ppb           |
+| `dew_point`            | Dew point (derived using the Magnus-Tetens approximation, with the coefficients from Alduchov & Eskridge (1996)) | C             |
 
 The following parameter codes are deprecated:
 
