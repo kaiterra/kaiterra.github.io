@@ -1,0 +1,511 @@
+openapi: 3.0.3
+info:
+  title: Kaiterra API v2
+  version: 2.0.0-preview
+  description: >
+    Kaiterra API v2 gives your programs access to the sensors and air quality data in your
+    organization.
+
+
+    Everything your organization owns lives under `/v2/orgs/{org}/`. `me` is a reserved ID. It
+    stands for the organization your API key belongs to, so `/v2/orgs/me/sensors` lists your
+    sensors without you having to know your organization's ID.
+
+
+    Every list uses the same envelope, `{"items": [...], "page": {...}}`. A batch response has
+    only `{"items": [...]}`, because it returns exactly the items the request named.
+
+
+    Every error is an RFC 9457 Problem Details document, served as `application/problem+json`.
+  contact:
+    name: Kaiterra
+    url: https://www.kaiterra.com/dev
+
+servers:
+  - url: https://api.kaiterra.com/v2
+
+security:
+  - apiKey: []
+
+tags:
+  - name: Organizations
+    description: The organization your API key belongs to.
+  - name: Sensors
+    description: The sensors in an organization.
+
+paths:
+  /orgs/{org}:
+    get:
+      operationId: getOrganization
+      tags: [Organizations]
+      summary: Get an organization
+      description: >
+        Returns metadata about one organization. Its path is also the root of the organization's
+        collections, such as `/v2/orgs/{org}/sensors`.
+      parameters:
+        - $ref: "#/components/parameters/org"
+      responses:
+        "200":
+          description: The organization.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organization"
+        "308":
+          $ref: "#/components/responses/WrongRegion"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /orgs/{org}/sensors:
+    get:
+      operationId: listSensors
+      tags: [Sensors]
+      summary: List sensors
+      description: >
+        Lists the sensors in the organization that your API key can reach, sorted by ID.
+
+
+        `ancestor` is an optional filter. It selects every sensor under one building, floor, or
+        space. Because it's a filter, one that matches nothing gives you an empty `items`, not an
+        error. To look up specific sensors by ID, use `GET /orgs/{org}/sensors/batch` instead.
+
+
+        This collection supports both kinds of paging. With no paging parameters, you get the first
+        cursor page. Pass `page.next_cursor` back as `cursor` to get the next one. Set `limit` to
+        switch to offset paging, where `page.total` tells you the size of the collection.
+      parameters:
+        - $ref: "#/components/parameters/org"
+        - name: ancestor
+          in: query
+          description: >
+            ID of any entity above the sensor, such as a building, floor, or space. Selects every
+            sensor under it. An ID that isn't an entity in this organization is a `400`.
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/cursor"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: One page of sensors.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SensorListPaged"
+              examples:
+                cursorPage:
+                  summary: A cursor page with more to come
+                  value:
+                    items:
+                      - id: 00000000-0001-0101-0000-00007e57c0de
+                        model: SE-200
+                        serial: "0123456789ABCDEF"
+                        parent:
+                          id: 018e91a0-0000-7000-8000-000000000003
+                          type: floor
+                          code: "3"
+                        ancestors:
+                          - id: 0189b2c0-0000-7000-8000-000000000001
+                            type: building
+                            code: HQ
+                          - id: 018e91a0-0000-7000-8000-000000000003
+                            type: floor
+                            code: "3"
+                        name: Lobby
+                    page:
+                      next_cursor: 3Qv7Kk9mXb2cLtR8hZpJwN5fYdA4sG6u
+                lastPage:
+                  summary: The last cursor page
+                  value:
+                    items: []
+                    page:
+                      next_cursor: null
+                offsetPage:
+                  summary: An offset page
+                  value:
+                    items: []
+                    page:
+                      total: 143
+        "308":
+          $ref: "#/components/responses/WrongRegion"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /orgs/{org}/sensors/batch:
+    get:
+      operationId: batchSensors
+      tags: [Sensors]
+      summary: Get sensors by ID
+      description: >
+        Returns exactly one sensor per ID, in the order you gave them.
+
+
+        This is a lookup, not a filter. On success, the response has every sensor the request named
+        and nothing else. That means duplicate IDs, unknown IDs, and sensors your API key can't
+        reach are all errors. Duplicate IDs are a `400`. Unknown IDs and sensors your API key
+        can't reach are a `404`, which doesn't say whether the sensor exists elsewhere. Either
+        response names each offending value against the `id` parameter.
+
+
+        The response isn't paged, because the request already fixes the number of items. There's
+        no `page`, and the list parameters `ancestor`, `cursor`, `limit`, and `offset` are
+        rejected.
+      parameters:
+        - $ref: "#/components/parameters/org"
+        - name: id
+          in: query
+          description: Comma-separated sensor IDs, from 1 to 100.
+          required: true
+          style: form
+          explode: false
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+              format: uuid
+          example: [00000000-0001-0101-0000-00007e57c0de, 00000000-0031-0001-0000-00007e57c0de]
+      responses:
+        "200":
+          description: The sensors, one per ID, in the order requested.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SensorList"
+        "308":
+          $ref: "#/components/responses/WrongRegion"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      description: >
+        Your Kaiterra API key, sent as `Authorization: Bearer <key>`. You can generate one under
+        **API Keys** in your account settings at https://app.kaiterra.com. Send only one kind of
+        credential. A request that carries more than one is a `400`.
+
+  parameters:
+    org:
+      name: org
+      in: path
+      required: true
+      description: >
+        The organization's ID, or the reserved word `me` for the organization your API key belongs
+        to. A value that's neither `me` nor a UUID is a `400` that names `org`. The ID of any
+        organization other than your own is a `403`.
+      schema:
+        type: string
+        example: me
+    cursor:
+      name: cursor
+      in: query
+      required: false
+      description: >
+        Pass the previous response's `page.next_cursor` here to continue where it left off. The
+        value is opaque. You can't combine it with `limit` or `offset`.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: >
+        Switches to offset paging, with this many items per page, from 1 to 250. The response then
+        carries `page.total`.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: >
+        How many items to skip. Only valid together with `limit`. If you pass `limit` without
+        `offset`, you get the first page. An offset past the end of the collection isn't an error.
+        You get an empty `items` and the current `total`.
+      schema:
+        type: integer
+        minimum: 0
+
+  schemas:
+    Organization:
+      type: object
+      description: A tenant. Every collection the organization owns lives under `/v2/orgs/{org}/`.
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The organization's ID. Use it as the `{org}` path segment.
+        name:
+          type: string
+          description: The organization's display name.
+
+    EntityReference:
+      type: object
+      description: >
+        Points at an entity in the organization's hierarchy. It carries only the entity's cheap
+        summary fields.
+      required: [id, type, code]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The entity's ID.
+        type:
+          type: string
+          description: The entity's type.
+          enum: [building, floor, space, hvac_equipment, ext]
+        code:
+          type: string
+          description: The entity's code. It's a short human key, unique among its siblings.
+      example:
+        id: 0189b2c0-0000-7000-8000-000000000001
+        type: building
+        code: HQ
+
+    Sensor:
+      type: object
+      description: A piece of hardware that takes readings.
+      required: [id, model, serial, parent, ancestors, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The ID this API uses for the sensor. It's never the serial.
+        model:
+          type: string
+          description: The sensor's model.
+          example: SE-200
+        serial:
+          type: string
+          description: The number printed on the case.
+          example: "0123456789ABCDEF"
+        parent:
+          allOf:
+            - $ref: "#/components/schemas/EntityReference"
+          description: The entity the sensor is placed in.
+        ancestors:
+          type: array
+          description: Every entity above the sensor, root first, ending with the parent.
+          items:
+            $ref: "#/components/schemas/EntityReference"
+        name:
+          type: string
+          description: The name a user gave the sensor. Empty when it has none.
+          example: Lobby
+
+    PageResponse:
+      type: object
+      description: >
+        Tells you how to get more items. In cursor mode, only `next_cursor` is present. In offset
+        mode, only `total` is present.
+      properties:
+        next_cursor:
+          type: string
+          nullable: true
+          description: >
+            If the collection has more items, the value to pass as `cursor` on your next request.
+            Otherwise, the literal `null`.
+        total:
+          type: integer
+          description: Total number of items in the collection.
+
+    SensorListPaged:
+      type: object
+      description: One page of sensors.
+      required: [items, page]
+      properties:
+        items:
+          type: array
+          description: The sensors on this page.
+          items:
+            $ref: "#/components/schemas/Sensor"
+        page:
+          allOf:
+            - $ref: "#/components/schemas/PageResponse"
+          description: >
+            How to get more items. Always present, even when `items` is empty or this is the last
+            page.
+
+    SensorList:
+      type: object
+      description: >
+        The sensors a batch request named. There's no `page`, because the request fixes the number
+        of items.
+      required: [items]
+      properties:
+        items:
+          type: array
+          description: One sensor per ID requested, in the order requested.
+          items:
+            $ref: "#/components/schemas/Sensor"
+
+    Problem:
+      type: object
+      description: >
+        An RFC 9457 Problem Details document. Every error response has this shape and is served as
+        `application/problem+json`.
+      required: [type, title, status, instance]
+      properties:
+        type:
+          type: string
+          format: uri
+          description: >
+            A URI naming the kind of problem. It's always `about:blank`, which means the status code
+            is the whole story.
+          example: about:blank
+        title:
+          type: string
+          description: The HTTP reason phrase.
+          example: Bad Request
+        status:
+          type: integer
+          description: The HTTP status code, repeated in the body.
+          example: 400
+        detail:
+          type: string
+          description: A human-readable explanation of this occurrence. Don't parse it in code.
+        instance:
+          type: string
+          format: uri
+          description: >
+            This occurrence, as `urn:kaiterra:request:<request id>`. Quote it when you contact
+            support.
+          example: urn:kaiterra:request:a1b2c3d4e5f6
+        errors:
+          type: array
+          description: >
+            Field-level detail. Present only on a `400` that is about specific parts of the
+            request.
+          items:
+            $ref: "#/components/schemas/ProblemError"
+
+    ProblemError:
+      type: object
+      description: >
+        Names one part of the request and what's wrong with it. Each entry carries either `pointer`
+        or `parameter`, never both.
+      required: [detail]
+      properties:
+        pointer:
+          type: string
+          description: >
+            A JSON Pointer into the request body, in URI fragment form, such as
+            `#/items/2/parent/id`.
+        parameter:
+          type: string
+          description: The name of the query or path parameter.
+          example: limit
+        detail:
+          type: string
+          description: What's wrong with that part of the request.
+          example: must be between 1 and 250
+
+  responses:
+    WrongRegion:
+      description: >
+        The organization's data is stored in another region. Repeat the request, with the same
+        credentials, at the URL in `Location`.
+      headers:
+        Location:
+          description: The same path and query on the organization's home region.
+          schema:
+            type: string
+            format: uri
+          example: https://api.kaiterra.cn/v2/orgs/me/sensors
+    BadRequest:
+      description: >
+        The request is malformed. When the problem is with specific parameters, `errors` names each
+        one. Otherwise, only `detail` explains it. One example is a request that carries more than
+        one kind of credential.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: about:blank
+            title: Bad Request
+            status: 400
+            instance: urn:kaiterra:request:a1b2c3d4e5f6
+            errors:
+              - parameter: limit
+                detail: must be between 1 and 250
+              - parameter: expand
+                detail: unknown URL parameter
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: about:blank
+            title: Unauthorized
+            status: 401
+            instance: urn:kaiterra:request:a1b2c3d4e5f6
+    Forbidden:
+      description: The credentials belong to another organization, or to no organization.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: about:blank
+            title: Forbidden
+            status: 403
+            instance: urn:kaiterra:request:a1b2c3d4e5f6
+    NotFound:
+      description: >
+        Something the request named doesn't exist, or your API key can't reach it. When the request
+        named it in a parameter, `errors` names each missing value.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: about:blank
+            title: Not Found
+            status: 404
+            instance: urn:kaiterra:request:a1b2c3d4e5f6
+            errors:
+              - parameter: id
+                detail: 00000000-0001-0101-0000-00007e57c0de not found
+    InternalServerError:
+      description: Server fault. Quote `instance` when you contact support.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: about:blank
+            title: Internal Server Error
+            status: 500
+            instance: urn:kaiterra:request:a1b2c3d4e5f6

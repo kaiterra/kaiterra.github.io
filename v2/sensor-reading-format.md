@@ -63,6 +63,13 @@ Each series under `data` has the following properties:
 | `co`                   | Carbon monoxide                                                                                                  | ppm           |
 | `no2`                  | Nitrogen dioxide (NO2)                                                                                           | ppb           |
 | `dew_point`            | Dew point (derived using the Magnus-Tetens approximation, with the coefficients from Alduchov & Eskridge (1996)) | C             |
+| `laeq`                 | A-weighted equivalent continuous sound level, the figure most building and occupational standards use            | dB            |
+| `lceq`                 | C-weighted equivalent continuous sound level, which keeps more low-frequency energy than A-weighting             | dB            |
+| `lzeq`                 | Z-weighted (flat, unweighted) equivalent continuous sound level                                                  | dB            |
+| `lamax`                | Highest A-weighted sound level observed during the sampling interval                                             | dB            |
+| `la10`                 | A-weighted sound level exceeded 10% of the sampling interval (the level of the loud events)                      | dB            |
+| `la90`                 | A-weighted sound level exceeded 90% of the sampling interval (the background level)                              | dB            |
+| `fluct`                | Sound fluctuation: `laeq` minus `la90`, each rounded to a whole decibel first (derived, not measured)            | dB            |
 
 The following parameter codes are deprecated:
 
@@ -83,3 +90,4 @@ The following parameter codes are deprecated:
 | `lx`    | Lumens per square meter (illuminance)                       |
 | `Pa`    | Pascals, or Newtons per square meter (pressure)             |
 | `K`     | Kelvins                                                     |
+| `dB`    | Decibels (sound levels are relative to 20 µPa)              |

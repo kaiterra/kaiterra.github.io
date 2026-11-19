@@ -40,7 +40,7 @@
 </li>
 </ul>
 <p>All dates/times follow <a href="http://tools.ietf.org/html/rfc3339">RFC3339</a> (a refinement of ISO8601), which looks like <code>2016-12-07T05:32:16Z</code>. Milliseconds are accepted but are ignored (truncated). All times must be in UTC; any that aren’t will be rejected with <code>400 bad request</code>.</p>
-<p>All sampling intervals, such as for hourly-averaged data, are labelled by the <em>ending</em> time of the sample sample, not the starting time. This is consistent with the way all apps report hourly average data from official sensors, probably because it avoids the problem of users thinking that the data they’re seeing is an hour older than it is. Note that this implies daily data for e.g. the 15th of March is labelled as <code>2016-03-16T00:00Z</code>, so clients may want to subtract a day when labelling such data.</p>
+<p>All sampling intervals of device data, such as for hourly-averaged data, are labelled by the <em>ending</em> time of the sample sample, not the starting time. This is consistent with the way all apps report hourly average data from official sensors, probably because it avoids the problem of users thinking that the data they’re seeing is an hour older than it is. Note that this implies daily data for e.g. the 15th of March is labelled as <code>2016-03-16T00:00Z</code>, so clients may want to subtract a day when labelling such data. Outdoor data (stations, places and locations) is the exception: its buckets are labelled by their <em>start</em>.</p>
 <p>There is no hour 24; a bucket extending from 11pm on Dec 31 to midnight is labelled as 01-01 00:00, length 1 hour.</p>
 <p>Latitude and longitude are specified in requests as a comma-separated pair, like <code>40.677715,-73.868130</code> (latitude, longitude), and in responses as an array of length 2 (again, latitude, then longitude).</p>
 <p>The <code>aqi</code> query string parameter, if present, causes APIs returning pollutant data to precalculate corresponding air quality index values according to the <a href="https://en.wikipedia.org/wiki/Air_quality_index">air quality index</a> of the given country or region. Codes are the 2-character codes from <a href="https://en.wikipedia.org/wiki/ISO_3166">ISO3166</a>. Supported values are <code>us</code>, <code>in</code>, and <code>cn</code>.</p>
@@ -203,8 +203,43 @@
 </tr>
 <tr>
 <td><code>dew_point</code></td>
-<td>Dew point (derived using the Magnus-Tetens approximation, with the coefficients from Alduchov &amp; Eskridge (1996))</td>
+<td>Dew point (computed using the Magnus-Tetens approximation, with the coefficients from Alduchov &amp; Eskridge (1996))</td>
 <td>C</td>
+</tr>
+<tr>
+<td><code>laeq</code></td>
+<td>A-weighted equivalent continuous sound level, the figure most building and occupational standards use</td>
+<td>dB</td>
+</tr>
+<tr>
+<td><code>lceq</code></td>
+<td>C-weighted equivalent continuous sound level, which keeps more low-frequency energy than A-weighting</td>
+<td>dB</td>
+</tr>
+<tr>
+<td><code>lzeq</code></td>
+<td>Z-weighted (flat, unweighted) equivalent continuous sound level</td>
+<td>dB</td>
+</tr>
+<tr>
+<td><code>lamax</code></td>
+<td>Highest A-weighted sound level observed during the sampling interval</td>
+<td>dB</td>
+</tr>
+<tr>
+<td><code>la10</code></td>
+<td>A-weighted sound level exceeded 10% of the sampling interval (the level of the loud events)</td>
+<td>dB</td>
+</tr>
+<tr>
+<td><code>la90</code></td>
+<td>A-weighted sound level exceeded 90% of the sampling interval (the background level)</td>
+<td>dB</td>
+</tr>
+<tr>
+<td><code>fluct</code></td>
+<td>Sound fluctuation: <code>laeq</code> minus <code>la90</code>, each rounded to a whole decibel first (derived, not measured)</td>
+<td>dB</td>
 </tr>
 </tbody>
 </table>
@@ -264,6 +299,10 @@
 <tr>
 <td><code>K</code></td>
 <td>Kelvins</td>
+</tr>
+<tr>
+<td><code>dB</code></td>
+<td>Decibels (sound levels are relative to 20 µPa)</td>
 </tr>
 </tbody>
 </table>
@@ -729,7 +768,7 @@ you had made the requests individually.</p>
     "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"{\"data\":[{\"param\":\"rco2\",\"units\":\"ppm\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":1673}]},{\"param\":\"rhumid\",\"source\":\"km102\",\"units\":\"%\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":54.79}]},{\"param\":\"rpm10c\",\"source\":\"km100\",\"units\":\"µg/m³\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":125}]},{\"param\":\"rpm25c\",\"source\":\"km100\",\"units\":\"µg/m³\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":275}]},{\"param\":\"rtemp\",\"source\":\"km102\",\"units\":\"C\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":20.57}]},{\"param\":\"rtvoc\",\"source\":\"km102\",\"units\":\"ppb\",\"span\":60,\"points\":[{\"ts\":\"2020-06-17T07:05:00Z\",\"value\":435.6}]}]}"</span></span>,
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">200</span>
   </span>}
-]</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 10 Sep 2026</p><script>/* eslint-env browser */
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 19 Nov 2026</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
